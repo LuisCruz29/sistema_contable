@@ -1,0 +1,75 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #5c6bc0;
+    font-size: 1.2rem;
+}
+
+.nav-item {
+    margin-right: 15px;
+}
+
+.navbar-brand,
+.nav-link {
+    color: white !important;
+    font-size: 1.2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+h4 {
+    color: #5c6bc0;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.feature-icon {
+    font-size: 60px;
+    color: #5c6bc0;
+}
+
+.card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    background-color: #ffffff;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #5c6bc0;
+    color: white;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    color: #ffffff;
+}
+
+.section {
+    margin: 40px 0;
+}
+
+a
+{
+    cursor: pointer;
+}
