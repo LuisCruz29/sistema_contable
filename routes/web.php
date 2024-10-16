@@ -3,37 +3,37 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('index.home');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('index.login');
 });
 
 Route::get('/principal', function () {
-    return view('principal');
+    return view('index.principal');
 });
 
 Route::get('/balancecomprobacion', function () {
-    return view('balancecomprobacion');
+    return view('report.Bal_Comprobacion');
 });
 
 Route::get('/balancegeneral', function () {
-    return view('balancegeneral');
+    return view('report.Bal_General');
 });
 
 Route::get('/consultarasientodiario', function () {
-    return view('consultarasientodiario');
+    return view('report.C_Asientos_Diario');
 });
 
 Route::get('/estadocapital', function () {
-    return view('estadocapital');
+    return view('report.Estado_Capital');
 });
 
 Route::get('/estadoresultado', function () {
-    return view('estadoresultados');
+    return view('report.Estado_Resultado');
 });
 
 Route::get('/registrodiario', function () {
-    return view('registrodiario');
+    return view('report.Registro_Diario');
 });
