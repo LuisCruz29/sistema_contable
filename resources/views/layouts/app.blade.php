@@ -16,6 +16,20 @@
     
     <!-- Estilos adicionales -->
     @stack('css')
+
+    <style>
+        /* Estilos para que el footer se mantenga en la parte inferior */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fw-bold fs-8">
@@ -46,15 +60,12 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="window.location.href='/'">Cerrar sesión</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" onclick="window.location.href='{{url('users')}}'">Usuario</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <div class="container @yield('extra-classes')" style="@yield('estilo-classes')">
+    <div class="container content @yield('extra-classes')" style="@yield('estilo-classes')">
         @yield('content')
     </div>
 
