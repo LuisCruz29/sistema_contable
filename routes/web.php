@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +38,5 @@ Route::get('/estadoresultado', function () {
 Route::get('/registrodiario', function () {
     return view('report.Registro_Diario');
 });
+
+Route::resource('users', UserController::class);

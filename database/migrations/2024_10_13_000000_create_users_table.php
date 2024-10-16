@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('user');
             $table->string('password');
             $table->rememberToken();
-
-
+           
             $table->foreign('permiso_id')->references('id')->on('tbl_permisos');
         });
 

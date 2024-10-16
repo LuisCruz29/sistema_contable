@@ -46,6 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="window.location.href='/'">Cerrar sesión</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="window.location.href='{{url('users')}}'">Usuario</a>
+                    </li>
                 </ul>
             </div>
         </div>

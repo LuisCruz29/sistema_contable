@@ -2,62 +2,61 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+/**
+ * Class User
+ *
+ * @property $id
+ * @property $permiso_id
+ * @property $nombreEmpleado
+ * @property $apellidoEmpleado
+ * @property $telefono
+ * @property $user
+ * @property $password
+ * @property $remember_token
+ *
+ * @property TblPermiso $tblPermiso
+ * @property TblRegistroDiario[] $tblRegistroDiarios
+ * @property TblLog[] $tblLogs
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
+class User extends Model
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    
+    protected $perPage = 20;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'permiso_id',
-        'nombreEmpleado',
-        'apellidoEmpleado',
-        'telefono',
-        'user',
-        'password',
-    ];
+    protected $fillable = ['permiso_id', 'nombreEmpleado', 'apellidoEmpleado', 'telefono', 'user'];
+    public $timestamps = false;
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function tblPermiso()
     {
-        return [
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(Permisos::class, 'permiso_id', 'id');
     }
-
-
-    public function permisos(){
-        $this->hasOne(Permisos::class);
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tblRegistroDiarios()
+    {
+        return $this->hasMany(RegistroDiario::class, 'id', 'user_id');
     }
-
-    public function registroDiario(){
-        $this->hasMany(RegistroDiario::class);
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tblLogs()
+    {
+        return $this->hasMany(Log::class, 'id', 'user_id');
     }
-
-    public function logs(){
-        $this->hasMany(Log::class);
-    }
+    
 }
