@@ -32,7 +32,7 @@ class User extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['permiso_id', 'nombreEmpleado', 'apellidoEmpleado', 'telefono', 'user'];
+    protected $fillable = ['permiso_id', 'nombreEmpleado', 'apellidoEmpleado', 'telefono', 'user','password'];
     public $timestamps = false;
 
     /**

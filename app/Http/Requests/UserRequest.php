@@ -27,6 +27,7 @@ class UserRequest extends FormRequest
 			'apellidoEmpleado' => 'required|string',
 			'telefono' => 'required|string',
 			'user' => 'required|string',
+            'password'=>'required|string',
         ];
     }
 }

@@ -28,10 +28,11 @@
         </div>
 
         <div class="form-group mb-2 mb20">
-            <label for="password" class="form-label">{{ __('Contraseña') }}</label>
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Contraseña">
-            {!! $errors->first('password', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+            <label for="password" class="form-label">{{ __('Password') }}</label>
+            <input type="text" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password', $user?->password) }}" id="password" placeholder="password">
+            {!! $errors->first('user', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
+       
         
     </div>
     <div class="col-md-12 mt20 mt-2">
