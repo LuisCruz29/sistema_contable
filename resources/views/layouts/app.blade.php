@@ -61,6 +61,10 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="window.location.href='{{url('users')}}'">Usuarios</a>
                     </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="window.location.href='{{url('tbl-permisos')}}'">Permisos</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" onclick="window.location.href='/'">Cerrar sesión</a>
                     </li>

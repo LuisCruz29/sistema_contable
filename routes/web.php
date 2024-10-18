@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TblPermisoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,5 @@ Route::get('/registrodiario', function () {
 });
 
 Route::resource('users', UserController::class);
+
+Route::resource('tbl-permisos', TblPermisoController::class);

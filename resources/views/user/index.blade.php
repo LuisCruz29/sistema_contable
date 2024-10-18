@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Empleados
+@endsection
 @section('template_title')
     Users
 @endsection

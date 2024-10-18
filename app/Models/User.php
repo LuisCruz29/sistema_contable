@@ -40,7 +40,7 @@ class User extends Model
      */
     public function tblPermiso()
     {
-        return $this->belongsTo(Permisos::class, 'permiso_id', 'id');
+        return $this->belongsTo(TblPermiso::class, 'permiso_id', 'id');
     }
     
     /**
