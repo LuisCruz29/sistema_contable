@@ -21,7 +21,7 @@
                     <div class="card-body bg-white">
                         
                                 <div class="form-group mb-2 mb20">
-                                    <strong>Roles</strong>
+                                    <strong>Role</strong>
                                     {{ $tblPermiso->rol }}
                                 </div>
                                 <div class="form-group mb-2 mb20">

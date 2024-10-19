@@ -81,7 +81,7 @@
                                             <td class="text-center">
                                                 <form action="{{ route('tbl-permisos.destroy', $tblPermiso->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-success" href="{{ route('tbl-permisos.edit', $tblPermiso->id) }}">
-                                                        <i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}
+                                                        <i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}
                                                     </a>
                                                 </form>
                                             </td>

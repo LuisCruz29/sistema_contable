@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('tipoLog');
             $table->foreign('user_id')->references('id')->on('users');
-            
         });
     }
 

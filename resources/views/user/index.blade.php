@@ -54,7 +54,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                            <td>{{ $user->id }}</td>
                                             
 										<td >{{ $user->permiso_id }}</td>
 										<td >{{ $user->nombreEmpleado }}</td>

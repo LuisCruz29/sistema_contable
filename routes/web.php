@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\TblLogController;
 use App\Http\Controllers\TblPermisoController;
 use App\Http\Controllers\UserController;
+use App\Models\TblLog;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,3 +45,5 @@ Route::get('/registrodiario', function () {
 Route::resource('users', UserController::class);
 
 Route::resource('tbl-permisos', TblPermisoController::class);
+Route::resource('tbl-logs', TblLogController::class);
+Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
