@@ -77,7 +77,6 @@ class TblLogController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        dd("entre a show");
         TblLog::find($id)->delete();
 
         return Redirect::route('tbl-logs.index')
