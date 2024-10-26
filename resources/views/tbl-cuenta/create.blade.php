@@ -1,25 +1,23 @@
 @extends('layouts.app')
 
-@section('title')
-    Modificar Cuenta  
+@section('template_title')
+    {{ __('Crear') }} Cuenta
 @endsection
+
 @section('content')
-    <br>
-    <br>
     <section class="content container-fluid">
-        <div class="">
+        <div class="row">
             <div class="col-md-12">
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Update') }} Cuenta</span>
+                        <span class="card-title">{{ __('Crear') }} Cuenta</span>
                     </div>
                     <div class="card-body bg-white">
-                        <form method="POST" action="{{ route('users.update', $user->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('tbl-cuentas.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
-                            @include('cuentas.form')
+                            @include('tbl-cuenta.form')
 
                         </form>
                     </div>
