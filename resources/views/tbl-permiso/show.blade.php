@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $tblPermiso->name ?? __('Show') . " " . __('Tbl Permiso') }}
+    Info Permiso
 @endsection
 
 @section('content')
@@ -11,17 +11,17 @@
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Show') }} Tbl Permiso</span>
+                            <span class="card-title">{{ __('Informacion') }} Permiso</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-permisos.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-permisos.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body bg-white">
                         
                                 <div class="form-group mb-2 mb20">
-                                    <strong>Role</strong>
+                                    <strong>Rol</strong>
                                     {{ $tblPermiso->rol }}
                                 </div>
                                 <div class="form-group mb-2 mb20">
