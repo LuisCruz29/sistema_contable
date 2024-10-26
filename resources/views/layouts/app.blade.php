@@ -44,7 +44,7 @@
                                 Estados Financieros
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Balance General</a></li>
+                                <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
                                 <li><a class="dropdown-item" href="#">Estado De Resultados</a></li>
                                 <li><a class="dropdown-item" href="#">Estado De Capital</a></li>
                                 <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
@@ -55,19 +55,19 @@
                                 Asientos Diarios
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Ingresar Asiento Diario</a></li>
-                                <li><a class="dropdown-item" href="#">Consultar Asientos Diarios</a></li>
+                                <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
+                                <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link " >Usuarios</a>
+                            <a class="nav-link" href="users" >Usuarios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " >Permisos</a>
+                            <a class="nav-link" href="tbl-permisos" >Permisos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " >Logs</a>
+                            <a class="nav-link" href="tbl-logs">Logs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " >Cerrar Sesion</a>

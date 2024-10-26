@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BalanceComprobacionController;
+use App\Http\Controllers\RegistroDiarioController;
 use App\Http\Controllers\TblLogController;
 use App\Http\Controllers\TblPermisoController;
 use App\Http\Controllers\UserController;
@@ -20,16 +21,8 @@ Route::get('/principal', function () {
     return view('index.principal');
 });
 
-Route::controller(BalanceComprobacionController::class)->group(function (){
-    Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
-});
-
 Route::get('/balancegeneral', function () {
     return view('report.Bal_General');
-});
-
-Route::get('/consultarasientodiario', function () {
-    return view('report.C_Asientos_Diario');
 });
 
 Route::get('/estadocapital', function () {
@@ -40,9 +33,16 @@ Route::get('/estadoresultado', function () {
     return view('report.Estado_Resultado');
 });
 
-Route::get('/registrodiario', function () {
-    return view('report.Registro_Diario');
+Route::controller(BalanceComprobacionController::class)->group(function (){
+    Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
 });
+
+
+Route::controller(RegistroDiarioController::class)->group(function (){
+    Route::get('/consultar_asiento_diario','index')->name('asiento_diario.index');
+    Route::get('/registrar_asiento_diario','insertar')->name('asiento_diario.insertar');
+});
+
 
 Route::resource('users', UserController::class);
 
