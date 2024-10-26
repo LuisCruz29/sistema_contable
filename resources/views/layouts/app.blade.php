@@ -44,6 +44,7 @@
                                 Estados Financieros
                             </a>
                             <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Cuentas T</a></li>
                                 <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
                                 <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
                                 <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
@@ -60,14 +61,16 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="users" >Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tbl-permisos" >Permisos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tbl-logs">Logs</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administracion
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="users" >Cuentas</a></li>
+                                <li><a class="dropdown-item" href="users" >Usuarios</a></li>
+                                <li><a class="dropdown-item" href="tbl-permisos" >Permisos</a></li>
+                                <li><a class="dropdown-item" href="tbl-logs">Logs</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " >Cerrar Sesion</a>
