@@ -14,8 +14,15 @@
             {!! $errors->first('descripicion', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <div class="form-group mb-2 mb20">
-            <label for="tipo" class="form-label">{{ __('Tipo') }}</label>
-            <input type="text" name="tipo" class="form-control @error('tipo') is-invalid @enderror" value="{{ old('tipo', $cuenta?->tipo) }}" id="tipo" placeholder="Tipo Cuenta">
+            <label for="tipo" class="form-label ">{{ __('Tipo') }}</label>
+            <select id="tipo" class="form-select @error('tipo') is-invalid @enderror" name="tipo" value="{{ old('tipo', $cuenta?->tipo) }}">
+                <option>Activo</option>
+                <option>Contra Activo</option>
+                <option>Pasivo</option>
+                <option>Capital</option>
+                <option>Ingresos</option>
+                <option>Gastos</option>
+            </select>
             {!! $errors->first('tipo', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div> 
     </div>

@@ -11,6 +11,9 @@ class Cuentas extends Model
     use HasFactory;
 
     protected $table = 'tbl_cuentas';
+
+    protected $fillable = ['nombreCuenta','descripcion','tipo'];
+    
     
     public function registroDiario(){
         $this->hasMany(RegistroDiario::class);
