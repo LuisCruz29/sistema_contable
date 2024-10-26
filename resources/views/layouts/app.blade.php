@@ -45,8 +45,8 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
-                                <li><a class="dropdown-item" href="#">Estado De Resultados</a></li>
-                                <li><a class="dropdown-item" href="#">Estado De Capital</a></li>
+                                <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
+                                <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
                                 <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
                             </ul>
                         </li>
