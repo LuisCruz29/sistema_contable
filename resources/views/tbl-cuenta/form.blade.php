@@ -13,13 +13,13 @@
         </div>
         <div class="form-group mb-2 mb20">
             <label for="tipo" class="form-label ">{{ __('Tipo') }}</label>
-            <select id="tipo" class="form-select @error('tipo') is-invalid @enderror" name="tipo" value="{{ old('tipo', $cuenta?->tipo) }}">
-                <option>Activo</option>
-                <option>Contra Activo</option>
-                <option>Pasivo</option>
-                <option>Capital</option>
-                <option>Ingresos</option>
-                <option>Gastos</option>
+            <select id="tipo" class="form-select @error('tipo') is-invalid @enderror" name="tipo">
+                <option {{ old('tipo', $cuenta?->tipo) == 'Activo' ? 'selected' : '' }}>Activo</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Contra Activo' ? 'selected' : '' }}>Contra Activo</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Pasivo' ? 'selected' : '' }}>Pasivo</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Capital' ? 'selected' : '' }}>Capital</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Ingresos' ? 'selected' : '' }}>Ingresos</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Gastos' ? 'selected' : '' }}>Gastos</option>
             </select>
             {!! $errors->first('tipo', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div> 
@@ -27,5 +27,6 @@
     </div>
     <div class="col-md-12 mt20 mt-2">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <a href="{{route('tbl-cuentas.index')}}" class="btn btn-primary">Cancelar</a>
     </div>
 </div>

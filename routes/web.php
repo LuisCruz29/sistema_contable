@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BalanceComprobacionController;
 use App\Http\Controllers\RegistroDiarioController;
+use App\Http\Controllers\TblCuentaController;
 use App\Http\Controllers\TblLogController;
 use App\Http\Controllers\TblPermisoController;
 use App\Http\Controllers\UserController;
@@ -45,7 +46,7 @@ Route::controller(RegistroDiarioController::class)->group(function (){
 
 
 Route::resource('users', UserController::class);
-
+Route::resource('tbl-cuentas', TblCuentaController::class);
 Route::resource('tbl-permisos', TblPermisoController::class);
 Route::resource('tbl-logs', TblLogController::class);
 Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');

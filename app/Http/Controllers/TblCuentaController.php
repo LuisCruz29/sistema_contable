@@ -27,9 +27,9 @@ class TblCuentaController extends Controller
      */
     public function create(): View
     {
-        $tblCuenta = new TblCuenta();
+        $cuenta = new TblCuenta();
 
-        return view('tbl-cuenta.create', compact('tblCuenta'));
+        return view('tbl-cuenta.create', compact('cuenta'));
     }
 
     /**
@@ -40,7 +40,7 @@ class TblCuentaController extends Controller
         TblCuenta::create($request->validated());
 
         return Redirect::route('tbl-cuentas.index')
-            ->with('success', 'TblCuenta created successfully.');
+            ->with('success', 'Cuenta creada exitosamente.');
     }
 
     /**
@@ -71,7 +71,7 @@ class TblCuentaController extends Controller
         $tblCuenta->update($request->validated());
 
         return Redirect::route('tbl-cuentas.index')
-            ->with('success', 'TblCuenta updated successfully');
+            ->with('success', 'Cuenta modificada exitosamente');
     }
 
     public function destroy($id): RedirectResponse
@@ -79,6 +79,6 @@ class TblCuentaController extends Controller
         TblCuenta::find($id)->delete();
 
         return Redirect::route('tbl-cuentas.index')
-            ->with('success', 'TblCuenta deleted successfully');
+            ->with('success', 'Cuenta eliminada exitosamente');
     }
 }

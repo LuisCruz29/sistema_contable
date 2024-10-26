@@ -1,20 +1,20 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ $cuenta->nombreCuenta ?? __('Show') . " " . __('Cuenta') }}
+@section('title')
+    Detalle Cuenta
 @endsection
 
 @section('content')
-    <section class="content container-fluid">
+    <section class="content container-fluid mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
                         <div class="float-left">
-                            <span class="card-title">{{ __('Mostrar') }}Cuenta</span>
+                            <span class="card-title">{{ __('Detalle') }} Cuenta</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-cuentas.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-cuentas.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 

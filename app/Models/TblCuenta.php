@@ -29,30 +29,30 @@ class TblCuenta extends Model
      * @var array<int, string>
      */
     protected $fillable = ['nombreCuenta', 'descripcion', 'tipo'];
+    public $timestamps = false;
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function tblBalanceComprobacions()
-    {
-        return $this->hasMany(\App\Models\TblBalanceComprobacion::class, 'id', 'cuenta_id');
-    }
+    // public function tblBalanceComprobacions()
+    // {
+    //     return $this->hasMany(\App\Models\TblBalanceComprobacion::class, 'id', 'cuenta_id');
+    // }
     
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tblCuentasTs()
-    {
-        return $this->hasMany(\App\Models\TblCuentasT::class, 'id', 'cuentas_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function tblCuentasTs()
+    // {
+    //     return $this->hasMany(\App\Models\TblCuentasT::class, 'id', 'cuentas_id');
+    // }
     
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tblRegistroDiarios()
-    {
-        return $this->hasMany(\App\Models\TblRegistroDiario::class, 'id', 'cuenta_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function tblRegistroDiarios()
+    // {
+    //     return $this->hasMany(\App\Models\TblRegistroDiario::class, 'id', 'cuenta_id');
+    // }
     
 }
