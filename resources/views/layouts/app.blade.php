@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
     
-    <!-- Solo una versión de Bootstrap -->
+  
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Bootstrap Icons -->
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
     
-    <!-- Estilos personalizados -->
+
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
     
-    <!-- Estilos adicionales -->
+  
     @stack('css')
 
     <style>
-        /* Estilos para que el footer se mantenga en la parte inferior */
+       
         body, html {
             height: 100%;
             margin: 0;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     
     <style>
-        /* Estilos generales */
+     
         body, html {
             height: 100%;
             margin: 0;
@@ -22,7 +22,7 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Contenedor de inicio de sesión */
+       
         .login-container {
             background-color: rgba(45, 45, 68, 0.9);
             padding: 2rem;
@@ -39,9 +39,9 @@
             margin-bottom: 1rem;
         }
 
-        /* Personalización de la alerta */
+       
         .noty_theme__sunset.noty_type__error {
-            background-color: #d9534f; /* Rojo claro */
+            background-color: #d9534f; 
             color: #ffffff;
             border-radius: 8px;
             padding: 1rem;
@@ -56,9 +56,9 @@
             vertical-align: middle;
         }
 
-        /* Barra de progreso */
+       
         .noty_bar {
-            background-color: #f0ad4e; /* Naranja para el progreso */
+            background-color: #f0ad4e; 
         }
     </style>
 </head>
@@ -93,12 +93,12 @@
         </form>
     </div>
 
-    <!-- Noty CSS y JS -->
+   
     <link href="https://cdn.jsdelivr.net/npm/noty/lib/noty.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/noty/lib/themes/sunset.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/noty/lib/noty.min.js"></script>
 
-    <!-- Mostrar notificación de error usando Noty -->
+  
     <script>
         @if (session('error'))
             new Noty({
