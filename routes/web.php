@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BalanceComprobacionController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\RegistroDiarioController;
 use App\Http\Controllers\TblCuentaController;
 use App\Http\Controllers\TblLogController;
@@ -12,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index.home');
-});
+})->name('inicio');
 
-Route::get('/login', function () {
-    return view('index.login');
-});
+Route::get('/login', [LogController::class, 'verLogin'])->name('login');
+Route::post('/login', [LogController::class, 'login'])->name('verLogin');
+Route::get('/logout', [LogController::class, 'logout'])->name('logout');
+
 
 Route::get('/principal', function () {
     return view('index.principal');

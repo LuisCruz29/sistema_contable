@@ -4,12 +4,16 @@
         <div class="col-md-12">
             <div class="form-group mb-4">
                 <label for="rol" class="form-label">{{ __('Rol') }}</label>
-                <select name="rol" id="rol" class="form-control @error('rol') is-invalid @enderror">
-                    <!-- Valor vacío que será tratado como 'false' -->
-                    <option value="" {{ old('rol', $tblPermiso?->rol) === null ? 'selected' : '' }}>No seleccionado</option>
-                    <option value="admin" {{ old('rol', $tblPermiso?->rol) == 'admin' ? 'selected' : '' }}>Administrador</option>
-                </select>
+                <input 
+                    type="text" 
+                    name="rol" 
+                    id="rol" 
+                    class="form-control @error('rol') is-invalid @enderror" 
+                    value="{{ old('rol', $tblPermiso?->rol) }}" 
+                    placeholder="Ingrese el rol (ejemplo: contador y auxiliar, gerente, admin)"
+                >
                 {!! $errors->first('rol', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
             </div>
         </div>
 

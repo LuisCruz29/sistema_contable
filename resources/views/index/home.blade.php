@@ -17,9 +17,9 @@
       <h1>TIENDA ROMERO</h1>
       <p>Tu tienda en línea de confianza, ofreciendo lo mejor para ti.</p>
       <div>
-          <button class="btn btn-primary btn-custom btn-primary-custom" onclick="window.location.href='/login'">
+          <a class="btn btn-primary btn-custom btn-primary-custom" href="{{ route('login') }}">
               <i class="bi bi-box-arrow-in-right"></i> INICIAR SESIÓN
-          </button>
+          </a>
       </div>
       <div class="footer">
           © 2024 Tienda Romero. Todos los derechos reservados.

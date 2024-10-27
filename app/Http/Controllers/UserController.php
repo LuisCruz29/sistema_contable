@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Models\TblPermiso;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -28,8 +29,9 @@ class UserController extends Controller
     public function create(): View
     {
         $user = new User();
+        $permisos = TblPermiso::all(['id', 'rol']);
 
-        return view('user.create', compact('user'));
+        return view('user.create', compact('user', 'permisos'));
     }
 
     /**
@@ -58,9 +60,12 @@ class UserController extends Controller
      */
     public function edit($id): View
     {
-        $user = User::find($id);
 
-        return view('user.edit', compact('user'));
+        $user = User::findOrFail($id);  
+        $permisos = TblPermiso::all(['id', 'rol']); 
+
+        return view('user.edit', compact('user', 'permisos'));
+
     }
 
     /**
@@ -68,7 +73,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user): RedirectResponse
     {
-        $user->update($request->validated());
+        $data = $request->validated();
+
+       
+        if (empty($data['password'])) {
+            unset($data['password']); 
+        }
+
+        $user->update($data);
 
         return Redirect::route('users.index')
             ->with('success', 'Usuario Modificado Correctamente');

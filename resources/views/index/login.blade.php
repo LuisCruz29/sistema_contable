@@ -5,24 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Tienda Romero</title>
-    <!-- Bootstrap CSS -->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    
+    <style>
+        /* Estilos generales */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #1f1f2e, #1f1f2e);
+            font-family: Arial, sans-serif;
+        }
 
+        /* Contenedor de inicio de sesión */
+        .login-container {
+            background-color: rgba(45, 45, 68, 0.9);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        /* Personalización de la alerta */
+        .noty_theme__sunset.noty_type__error {
+            background-color: #d9534f; /* Rojo claro */
+            color: #ffffff;
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .noty_theme__sunset.noty_type__error .noty_body i {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Barra de progreso */
+        .noty_bar {
+            background-color: #f0ad4e; /* Naranja para el progreso */
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="login-container">
+        <div class="text-center">
+            <i class="bi bi-person-circle login-icon"></i>
+        </div>
         <h2 class="text-center">Iniciar Sesión</h2>
-        <form>
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
             <div class="mb-3">
                 <label for="username" class="form-label">Usuario</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese su usuario" required>
                 </div>
             </div>
 
@@ -30,27 +84,33 @@
                 <label for="password" class="form-label">Contraseña</label>
                 <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
                 </div>
             </div>
 
-            <div class="d-flex justify-content-between">
-                <button type="button" class="btn btn-primary btn-custom btn-primary-custom" onclick="window.location.href='/principal'">
-                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
-                </button>
-                <button type="button" class="btn btn-secondary btn-custom btn-secondary-custom" onclick="window.location.href='/'">
-                    <i class="bi bi-x-circle"></i> Cancelar
-                </button>
-            </div>
-
-            <div class="forgot-password">
-                <a href="#" onclick="alert('Funcionalidad de recuperación de contraseña aún no implementada.');">¿Olvidó su contraseña?</a>
-            </div>
+            <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+            <a href="/" class="btn btn-secondary w-100 mt-2">Cancelar</a>
         </form>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Noty CSS y JS -->
+    <link href="https://cdn.jsdelivr.net/npm/noty/lib/noty.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/noty/lib/themes/sunset.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/noty/lib/noty.min.js"></script>
+
+    <!-- Mostrar notificación de error usando Noty -->
+    <script>
+        @if (session('error'))
+            new Noty({
+                text: '<i class="bi bi-exclamation-triangle-fill"></i> {{ session('error') }}',
+                type: 'error',
+                layout: 'topRight',
+                theme: 'sunset',
+                timeout: 3000, 
+                progressBar: true,
+            }).show();
+        @endif
+    </script>
 </body>
 
 </html>

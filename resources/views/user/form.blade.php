@@ -4,11 +4,23 @@
 <div class="row padding-1 p-1">
     
     <div class="col-md-12">
+
         <div class="form-group mb-2 mb20">
-            <label for="permiso_id" class="form-label">{{ __('Permiso Id') }}</label>
-            <input type="number" name="permiso_id" class="form-control @error('permiso_id') is-invalid @enderror" value="{{ old('permiso_id', $user?->permiso_id) }}" id="permiso_id" placeholder="Permiso Id">
-            {!! $errors->first('permiso_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+                <label for="permiso_id" class="form-label">{{ __('Permiso Id') }}</label>
+                <select name="permiso_id" id="permiso_id" class="form-select @error('permiso_id') is-invalid @enderror">
+                    <option value="">{{ __('Seleccione un rol') }}</option>
+                    @foreach($permisos as $permiso)
+                        <option value="{{ $permiso->id }}" {{ old('permiso_id', $user?->permiso_id) == $permiso->id ? 'selected' : '' }}>
+                            {{ $permiso->rol }}
+                        </option>
+                    @endforeach
+                </select>
+                {!! $errors->first('permiso_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+
         </div>
+
+
+
         <div class="form-group mb-2 mb20">
             <label for="nombre_empleado" class="form-label">{{ __('Nombre') }}</label>
             <input type="text" name="nombreEmpleado" class="form-control @error('nombreEmpleado') is-invalid @enderror" value="{{ old('nombreEmpleado', $user?->nombreEmpleado) }}" id="nombre_empleado" placeholder="Nombreempleado">
