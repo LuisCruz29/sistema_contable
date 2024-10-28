@@ -33,15 +33,39 @@
                         
                         
                         @if (session('permiso_id') == 1)
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('asiento_diario.insertar') }}">Ingresar Registro Diario</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/balancegeneral">Consultar Estados Financieros</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/users">Crear Usuarios</a>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Estados Financieros
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Cuentas T</a></li>
+                                <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
+                                <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
+                                <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
+                                <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Asientos Diarios
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
+                                <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Administracion
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="tbl-cuentas" >Cuentas</a></li>
+                                <li><a class="dropdown-item" href="users" >Usuarios</a></li>
+                                <li><a class="dropdown-item" href="tbl-permisos" >Permisos</a></li>
+                                <li><a class="dropdown-item" href="tbl-logs">Logs</a></li>
+                            </ul>
+                        </li>
                         @endif
 
                         
