@@ -52,6 +52,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
                                 <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
+                                <li><a class="dropdown-item" href="{{route('tbl-registro-diarios.index')}}">Asiento DIario</a></li>
+
                             </ul>
                         </li>
 
@@ -86,6 +88,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/balancegeneral">Consultar Estados Financieros</a>
                             </li>
+                           
                         @endif
 
                        

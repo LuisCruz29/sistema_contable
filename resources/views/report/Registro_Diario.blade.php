@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    REGISTRO EN EL DIARIO
+ REGISTRO EN EL DIARIO
 @endsection
 
 @push('css')

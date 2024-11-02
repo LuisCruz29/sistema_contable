@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_RegistroDiario', function (Blueprint $table) {
+        Schema::create('tbl_registro_diarios', function (Blueprint $table) {
             $table->id();
             $table->integer('codigoTransaccion');
             $table->integer('cuenta_id');
@@ -23,6 +23,8 @@ return new class extends Migration
 
             $table->foreign('cuenta_id')->references('id')->on('tbl_cuentas');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
+
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_RegistroDiario');
+        Schema::dropIfExists('tbl_registro_diarios');
     }
 };
