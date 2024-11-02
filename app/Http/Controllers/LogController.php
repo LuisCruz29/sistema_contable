@@ -27,7 +27,6 @@ class LogController extends Controller
             session([
                 'user_id' => $usuario->id,
                 'username' => $usuario->user,
-                'permiso_id' => $usuario->permiso_id 
             ]);
             return redirect('/principal');
         }
