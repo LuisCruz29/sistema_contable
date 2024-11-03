@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,15 +20,15 @@ class LogController extends Controller
             'password' => 'string|required'
         ]);
 
-        $usuario = DB::table('users')->where('user', $peticion->username)->first();
+        $user=User::where('user',$peticion->username)->first();
+        
 
-       
-        if ($usuario && $peticion->password === $usuario->password) {
-          
+        if ($user && $peticion->password === $user->password) {
+            
             session([
-                'user_id' => $usuario->id,
-                'username' => $usuario->user,
+                'user'=>$user,
             ]);
+            
             return redirect('/principal');
         }
 
@@ -37,7 +38,7 @@ class LogController extends Controller
     public function logout()
     {
         
-        session()->forget(['user_id', 'username', 'permiso_id']);
-        return view('index.home');
+        session()->forget(['user']);
+        return view('index.login');
     }
 }

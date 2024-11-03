@@ -18,71 +18,52 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         
-                        @if (isset($usuario))
-                            @php
-                                $permisos = $usuario->tblPermiso;
-                            @endphp
-
-                            @if ($permisos->consultarEstadosFinancieros ?? false)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Estados Financieros
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @if ($permisos->consultarCuentasT ?? false)
-                                            <li><a class="dropdown-item" href="#">Cuentas T</a></li>
-                                        @endif
-                                        @if ($permisos->consultarEstadosFinancieros ?? false)
-                                            <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
-                                            <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
-                                            <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
-                                            <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
-                                        @endif
-                                    </ul>
-                                </li>
-                            @endif
-
-                            @if ($permisos->ingresarRegistroDiario ?? false || $permisos->consultarRegistroDiario ?? false)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Asientos Diarios
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @if ($permisos->ingresarRegistroDiario ?? false)
-                                            <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
-                                        @endif
-                                        @if ($permisos->consultarRegistroDiario ?? false)
-                                            <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
-                                        @endif
-                                    </ul>
-                                </li>
-                            @endif
-                            
-                            @if ($permisos->crearUsuarios ?? false || $permisos->gestionarPermisos ?? false)
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Administración
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @if ($permisos->crearUsuarios ?? false)
-                                            <li><a class="dropdown-item" href="users">Usuarios</a></li>
-                                        @endif
-                                        @if ($permisos->gestionarPermisos ?? false)
-                                            <li><a class="dropdown-item" href="tbl-permisos">Permisos</a></li>
-                                        @endif
-                                    </ul>
-                                </li>
-                            @endif
-                            
-                            
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Estados Financieros
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (session('user')->tblPermiso->consultarCuentasT)
+                                        <li><a class="dropdown-item" href="#">Cuentas T</a></li>
+                                    @endif
+                                    @if (session('user')->tblPermiso->consultarEstadosFinancieros)
+                                        <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
+                                        <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
+                                        <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
+                                        <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
+                                    @endif
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Asientos Diarios
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (session('user')->tblPermiso->ingresarRegistroDiario)
+                                        <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
+                                    @endif
+                                    @if (session('user')->tblPermiso->consultarRegistroDiario)
+                                        <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
+                                    @endif
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administración
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @if (session('user')->tblPermiso->crearUsuarios)
+                                        <li><a class="dropdown-item" href="users">Usuarios</a></li>
+                                    @endif
+                                    @if (session('user')->tblPermiso->gestionarPermisos)
+                                        <li><a class="dropdown-item" href="tbl-permisos">Permisos</a></li>
+                                    @endif
+                                </ul>
+                            </li>                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
                             </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Iniciar Sesión</a>
-                            </li>
-                        @endif
+                      
 
                     </ul>
                 </div>
