@@ -8,6 +8,7 @@ use App\Http\Controllers\TblLogController;
 use App\Http\Controllers\TblPermisoController;
 use App\Http\Controllers\TblRegistroDiarioController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\verificarUsuario;
 use App\Models\BalanceComprobacion;
 use App\Models\TblLog;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,8 @@ Route::get('/logout', [LogController::class, 'logout'])->name('logout');
 
 Route::get('/principal', function () {
     return view('index.principal');
-});
+})->middleware('verificarUsuario');
+
 
 Route::get('/balancegeneral', function () {
     return view('report.Bal_General');
