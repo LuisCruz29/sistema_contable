@@ -27,4 +27,6 @@
             </div>
         </div>
     </section>
+
+    <script src="{{ asset('js/agregarFila.js') }}"></script>
 @endsection

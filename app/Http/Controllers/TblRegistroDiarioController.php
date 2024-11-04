@@ -34,21 +34,37 @@ class TblRegistroDiarioController extends Controller
     }
 
    
-    public function store(TblRegistroDiarioRequest $request): RedirectResponse
-    {
-        $contarRegistros = TblRegistroDiario::count();
+    public function store(Request $request)
+{
+    // Validar los datos
+    $request->validate([
+        'codigoTransaccion' => 'required',
+        'user_id' => 'required',
+        'fecha' => 'required|date',
+        'cuenta_ids' => 'required|array|max:2',
+        'debes' => 'required|array|max:2',
+        'haberes' => 'required|array|max:2',
+        'descripciones' => 'required|array|max:2',
+        // Puedes agregar validaciones adicionales según sea necesario
+    ]);
 
-        if ($contarRegistros >= 2) {
-            return Redirect::route('tbl-registro-diario.index')
-                ->with('error', 'No se pueden crear más de dos registros en el libro diario.');
-        }else {
-            TblRegistroDiario::create($request->validated());
-
-            return Redirect::route('tbl-registro-diario.index')
-                ->with('success', 'Registro diario creado exitosamente.');
-           
-        }
+    // Recorrer cada registro enviado
+    foreach ($request->cuenta_ids as $index => $cuentaId) {
+        // Crear un nuevo registro en la base de datos
+        TblRegistroDiario::create([
+            'codigoTransaccion' => $request->codigoTransaccion,
+            'cuenta_id' => $cuentaId,
+            'user_id' => $request->user_id,
+            'debe' => $request->debes[$index],
+            'haber' => $request->haberes[$index],
+            'descripcion' => $request->descripciones[$index],
+            'fecha' => $request->fecha,
+        ]);
     }
+
+    // Redireccionar o retornar una respuesta
+    return Redirect::route('tbl-registro-diario.index')->with('success', 'Registros guardados exitosamente');
+}
 
 
     /**
@@ -78,7 +94,7 @@ class TblRegistroDiarioController extends Controller
     {
         $tblRegistroDiario->update($request->validated());
 
-        return Redirect::route('tbl-registro-diarios.index')
+        return Redirect::route('tbl-registro-diario.index')
             ->with('success', 'TblRegistroDiario updated successfully');
     }
 
@@ -86,7 +102,7 @@ class TblRegistroDiarioController extends Controller
     {
         TblRegistroDiario::find($id)->delete();
 
-        return Redirect::route('tbl-registro-diarios.index')
+        return Redirect::route('tbl-registro-diario.index')
             ->with('success', 'Registro diario eliminado exitosamente');
     }
 }

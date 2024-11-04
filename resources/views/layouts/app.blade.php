@@ -40,10 +40,10 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @if (session('user')->tblPermiso->ingresarRegistroDiario)
-                                        <li><a class="dropdown-item" href="tbl-registro-diario">Ingresar Asiento Diario</a></li>
+                                        <li><a class="dropdown-item"  href="{{route('tbl-registro-diario.create')}}">Ingresar Asiento Diario</a></li>
                                     @endif
                                     @if (session('user')->tblPermiso->consultarRegistroDiario)
-                                        <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
+                                        <li><a class="dropdown-item" href="{{route('tbl-registro-diario.index')}}">Consultar Asientos Diarios</a></li>
                                     @endif
                                 </ul>
                             </li>
@@ -53,12 +53,12 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @if (session('user')->tblPermiso->crearUsuarios)
-                                        <li><a class="dropdown-item" href="users">Usuarios</a></li>
+                                        <li><a class="dropdown-item" href="{{route('users.index')}}">Usuarios</a></li>
                                     @endif
                                     @if (session('user')->tblPermiso->gestionarPermisos)
-                                        <li><a class="dropdown-item" href="tbl-permisos">Permisos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('tbl-permisos.index')}}">Permisos</a></li>
                                     @endif
-                                    <li><a class="dropdown-item" href="tbl-cuentas">Cuentas</a></li>
+                                    <li><a class="dropdown-item" href="{{route('tbl-cuentas.index')}}">Cuentas</a></li>
 
                                 </ul>
                             </li>                            

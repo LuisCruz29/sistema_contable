@@ -51,16 +51,16 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             <td>{{ $tblRegistroDiario->codigoTransaccion }}</td>
-                                            <td>{{ $tblRegistroDiario->cuenta_id }}</td>
-                                            <td>{{ $tblRegistroDiario->user_id }}</td>
+                                            <td>{{ $tblRegistroDiario->tblCuenta->nombreCuenta }}</td>
+                                            <td>{{ $tblRegistroDiario->user->nombreEmpleado }}</td>
                                             <td>{{ $tblRegistroDiario->debe }}</td>
                                             <td>{{ $tblRegistroDiario->haber }}</td>
                                             <td>{{ $tblRegistroDiario->descripcion }}</td>
                                             <td>{{ $tblRegistroDiario->fecha }}</td>
                                             <td>
                                                 <form action="{{ route('tbl-registro-diario.destroy', $tblRegistroDiario->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('tbl-registro-diarios.show', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tbl-registro-diarios.edit', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                    <a class="btn btn-sm btn-primary" href="{{ route('tbl-registro-diario.show', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('tbl-registro-diario.edit', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
