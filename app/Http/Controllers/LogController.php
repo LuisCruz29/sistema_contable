@@ -39,6 +39,6 @@ class LogController extends Controller
     {
         
         session()->forget(['user']);
-        return view('index.login');
+        return redirect()->route('login');
     }
 }
