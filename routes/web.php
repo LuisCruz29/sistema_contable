@@ -19,40 +19,43 @@ Route::get('/', function () {
 
 Route::get('/login', [LogController::class, 'verLogin'])->name('login');
 Route::post('/login', [LogController::class, 'login'])->name('verLogin');
-Route::get('/logout', [LogController::class, 'logout'])->name('logout');
+Route::middleware('verificarUsuario')->group(function (){
 
-
-Route::get('/principal', function () {
-    return view('index.principal');
-})->middleware('verificarUsuario');
-
-
-Route::get('/balancegeneral', function () {
-    return view('report.Bal_General');
+    Route::get('/logout', [LogController::class, 'logout'])->name('logout');
+    
+    
+    Route::get('/principal', function () {
+        return view('index.principal');
+    });
+    
+    
+    Route::get('/balancegeneral', function () {
+        return view('report.Bal_General');
+    });
+    
+    Route::get('/estadocapital', function () {
+        return view('report.Estado_Capital');
+    });
+    
+    Route::get('/estadoresultado', function () {
+        return view('report.Estado_Resultado');
+    });
+    
+    Route::controller(BalanceComprobacionController::class)->group(function (){
+        Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
+    });
+    
+    
+    Route::controller(RegistroDiarioController::class)->group(function (){
+        Route::get('/consultar_asiento_diario','index')->name('asiento_diario.index');
+        Route::get('/registrar_asiento_diario','insertar')->name('asiento_diario.insertar');
+    });
+    
+    
+    Route::resource('users', UserController::class);
+    Route::resource('tbl-cuentas', TblCuentaController::class);
+    Route::resource('tbl-permisos', TblPermisoController::class);
+    Route::resource('tbl-logs', TblLogController::class);
+    Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
+    Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);
 });
-
-Route::get('/estadocapital', function () {
-    return view('report.Estado_Capital');
-});
-
-Route::get('/estadoresultado', function () {
-    return view('report.Estado_Resultado');
-});
-
-Route::controller(BalanceComprobacionController::class)->group(function (){
-    Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
-});
-
-
-Route::controller(RegistroDiarioController::class)->group(function (){
-    Route::get('/consultar_asiento_diario','index')->name('asiento_diario.index');
-    Route::get('/registrar_asiento_diario','insertar')->name('asiento_diario.insertar');
-});
-
-
-Route::resource('users', UserController::class);
-Route::resource('tbl-cuentas', TblCuentaController::class);
-Route::resource('tbl-permisos', TblPermisoController::class);
-Route::resource('tbl-logs', TblLogController::class);
-Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
-Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);
