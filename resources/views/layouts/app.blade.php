@@ -40,7 +40,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @if (session('user')->tblPermiso->ingresarRegistroDiario)
-                                        <li><a class="dropdown-item" href="{{route('asiento_diario.insertar')}}">Ingresar Asiento Diario</a></li>
+                                        <li><a class="dropdown-item" href="tbl-registro-diario">Ingresar Asiento Diario</a></li>
                                     @endif
                                     @if (session('user')->tblPermiso->consultarRegistroDiario)
                                         <li><a class="dropdown-item" href="{{route('asiento_diario.index')}}">Consultar Asientos Diarios</a></li>
@@ -58,6 +58,8 @@
                                     @if (session('user')->tblPermiso->gestionarPermisos)
                                         <li><a class="dropdown-item" href="tbl-permisos">Permisos</a></li>
                                     @endif
+                                    <li><a class="dropdown-item" href="tbl-cuentas">Cuentas</a></li>
+
                                 </ul>
                             </li>                            
                             <li class="nav-item">

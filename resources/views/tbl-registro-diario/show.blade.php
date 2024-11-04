@@ -14,7 +14,7 @@
                             <span class="card-title">{{ __('Show') }} Tbl Registro Diario</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-registro-diarios.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('tbl-registro-diario.index') }}"> {{ __('Volver') }}</a>
                         </div>
                     </div>
 

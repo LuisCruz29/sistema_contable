@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class User
@@ -57,6 +58,14 @@ class User extends Model
     public function tblLogs()
     {
         return $this->hasMany(Log::class, 'id', 'user_id');
+    }
+
+    public function maxCodigoRegistro(){
+        $maxId=DB::table('tbl_RegistroDiario')
+                ->selectRaw('COALESCE(MAX(id) + 1, 1) AS max_id')
+                ->value('max_id');
+
+        return $maxId;
     }
     
 }

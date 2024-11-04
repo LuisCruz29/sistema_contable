@@ -6,6 +6,7 @@ use App\Models\TblRegistroDiario;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TblRegistroDiarioRequest;
+use App\Models\TblCuenta;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -28,8 +29,8 @@ class TblRegistroDiarioController extends Controller
     public function create(): View
     {
         $tblRegistroDiario = new TblRegistroDiario();
-
-        return view('tbl-registro-diario.create', compact('tblRegistroDiario'));
+        $cuentas=TblCuenta::all();
+        return view('tbl-registro-diario.create', compact('tblRegistroDiario','cuentas'));
     }
 
    
@@ -38,12 +39,12 @@ class TblRegistroDiarioController extends Controller
         $contarRegistros = TblRegistroDiario::count();
 
         if ($contarRegistros >= 2) {
-            return Redirect::route('tbl-registro-diarios.index')
+            return Redirect::route('tbl-registro-diario.index')
                 ->with('error', 'No se pueden crear más de dos registros en el libro diario.');
         }else {
             TblRegistroDiario::create($request->validated());
 
-            return Redirect::route('tbl-registro-diarios.index')
+            return Redirect::route('tbl-registro-diario.index')
                 ->with('success', 'Registro diario creado exitosamente.');
            
         }

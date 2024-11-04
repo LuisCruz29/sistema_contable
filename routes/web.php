@@ -53,4 +53,4 @@ Route::resource('tbl-cuentas', TblCuentaController::class);
 Route::resource('tbl-permisos', TblPermisoController::class);
 Route::resource('tbl-logs', TblLogController::class);
 Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
-Route::resource('tbl-registro-diarios', TblRegistroDiarioController::class);
+Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);

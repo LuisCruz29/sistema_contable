@@ -42,7 +42,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Permiso Id</th>
+									<th >Rol</th>
 									<th >Empleado</th>
 									<th >Apellido</th>
 									<th >Telefono</th>
@@ -56,7 +56,7 @@
                                         <tr>
                                             <td>{{ $user->id }}</td>
                                             
-										<td >{{ $user->permiso_id }}</td>
+										<td >{{ $user->tblPermiso->rol }}</td>
 										<td >{{ $user->nombreEmpleado }}</td>
 										<td >{{ $user->apellidoEmpleado }}</td>
 										<td >{{ $user->telefono }}</td>
