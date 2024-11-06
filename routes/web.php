@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BalanceComprobacionController;
+use App\Http\Controllers\CuentasTController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\RegistroDiarioController;
 use App\Http\Controllers\TblCuentaController;
@@ -44,6 +45,8 @@ Route::middleware('verificarUsuario')->group(function (){
     Route::controller(BalanceComprobacionController::class)->group(function (){
         Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
     });
+
+    Route::get('/cuentasT',[CuentasTController::class,'obtenerCuentasT'])->name('cuentasT.index');
         
     Route::resource('users', UserController::class);
     Route::resource('tbl-cuentas', TblCuentaController::class);

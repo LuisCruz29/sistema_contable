@@ -24,7 +24,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     @if (session('user')->tblPermiso->consultarCuentasT)
-                                        <li><a class="dropdown-item" href="#">Cuentas T</a></li>
+                                        <li><a class="dropdown-item" href="{{route('cuentasT.index')}}">Cuentas T</a></li>
                                     @endif
                                     @if (session('user')->tblPermiso->consultarEstadosFinancieros)
                                         <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>

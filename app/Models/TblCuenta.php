@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\TblRegistroDiario;
 /**
  * Class TblCuenta
  *
@@ -50,9 +50,9 @@ class TblCuenta extends Model
     // /**
     //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
     //  */
-    // public function tblRegistroDiarios()
-    // {
-    //     return $this->hasMany(\App\Models\TblRegistroDiario::class, 'id', 'cuenta_id');
-    // }
+    public function tblRegistroDiarios()
+    {
+        return $this->hasMany(TblRegistroDiario::class, 'cuenta_id', 'id');
+    }
     
 }
