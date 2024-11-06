@@ -7,8 +7,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TblRegistroDiarioRequest;
 use App\Models\TblCuenta;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+
+use function Laravel\Prompts\table;
 
 class TblRegistroDiarioController extends Controller
 {
@@ -23,6 +26,15 @@ class TblRegistroDiarioController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $tblRegistroDiarios->perPage());
     }
 
+    public function filtrar(Request $request){
+        $request->validate([
+            'codigoTransaccion' => 'required|numeric'
+        ]);
+
+        $tblRegistroDiarios = TblRegistroDiario::where('codigoTransaccion',$request->input('codigoTransaccion'))->paginate(2);
+        return view('tbl-registro-diario.index', compact('tblRegistroDiarios'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -35,36 +47,34 @@ class TblRegistroDiarioController extends Controller
 
    
     public function store(Request $request)
-{
-    // Validar los datos
-    $request->validate([
-        'codigoTransaccion' => 'required',
-        'user_id' => 'required',
-        'fecha' => 'required|date',
-        'cuenta_ids' => 'required|array|max:2',
-        'debes' => 'required|array|max:2',
-        'haberes' => 'required|array|max:2',
-        'descripciones' => 'required|array|max:2',
-        // Puedes agregar validaciones adicionales según sea necesario
-    ]);
-
-    // Recorrer cada registro enviado
-    foreach ($request->cuenta_ids as $index => $cuentaId) {
-        // Crear un nuevo registro en la base de datos
-        TblRegistroDiario::create([
-            'codigoTransaccion' => $request->codigoTransaccion,
-            'cuenta_id' => $cuentaId,
-            'user_id' => $request->user_id,
-            'debe' => $request->debes[$index],
-            'haber' => $request->haberes[$index],
-            'descripcion' => $request->descripciones[$index],
-            'fecha' => $request->fecha,
+    {
+        
+        $request->validate([
+            'codigoTransaccion' => 'required',
+            'user_id' => 'required',
+            'fecha' => 'required|date',
+            'cuenta_ids' => 'required|array|max:2',
+            'debes' => 'required|array|max:2',
+            'haberes' => 'required|array|max:2',
+            'descripciones' => 'required|array|max:2',
+            
         ]);
-    }
 
-    // Redireccionar o retornar una respuesta
-    return Redirect::route('tbl-registro-diario.index')->with('success', 'Registros guardados exitosamente');
-}
+        
+        foreach ($request->cuenta_ids as $index => $cuentaId) {
+            TblRegistroDiario::create([
+                'codigoTransaccion' => $request->codigoTransaccion,
+                'cuenta_id' => $cuentaId,
+                'user_id' => $request->user_id,
+                'debe' => $request->debes[$index],
+                'haber' => $request->haberes[$index],
+                'descripcion' => $request->descripciones[$index],
+                'fecha' => $request->fecha,
+            ]);
+        }
+
+        return Redirect::route('tbl-registro-diario.index')->with('success', 'Registros guardados exitosamente');
+    }
 
 
     /**
@@ -80,29 +90,14 @@ class TblRegistroDiarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id): View
+    
+
+    public function destroy($codigo): RedirectResponse
     {
-        $tblRegistroDiario = TblRegistroDiario::find($id);
-
-        return view('tbl-registro-diario.edit', compact('tblRegistroDiario'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(TblRegistroDiarioRequest $request, TblRegistroDiario $tblRegistroDiario): RedirectResponse
-    {
-        $tblRegistroDiario->update($request->validated());
-
-        return Redirect::route('tbl-registro-diario.index')
-            ->with('success', 'TblRegistroDiario updated successfully');
-    }
-
-    public function destroy($id): RedirectResponse
-    {
-        TblRegistroDiario::find($id)->delete();
-
+        DB::table('tbl_RegistroDiario')->where('codigoTransaccion',$codigo)->delete();
         return Redirect::route('tbl-registro-diario.index')
             ->with('success', 'Registro diario eliminado exitosamente');
     }
+
+
 }

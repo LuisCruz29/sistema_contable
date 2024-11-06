@@ -5,9 +5,8 @@
 @endsection
 
 @section('content')
-    <br>
-    <br>
-    <div class="container-fluid">
+    
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -29,27 +28,34 @@
                     @endif
 
                     <div class="card-body bg-white">
-                        <!-- Formulario de Entrada -->
-                        <!-- Tabla de Registros -->
+                       <div class="container">
+                           <form action="{{route('filtar.por.codigo')}}" method="get">                           
+                               <label for="codigo" class="form-label">Codigo Transaccion</label>
+                               <input type="number" name="codigoTransaccion" class="form-control" id="codigo">
+                                <div class="mt-2">
+                                    <button type="submit" class="btn btn-primary mt-1">Filtar</button>
+                                    <a href="{{route('tbl-registro-diario.index')}}" class="btn btn-primary mt-1">Limpiar</a>
+                                </div>
+                           </form>   
+                       </div>
+                        
                         <div class="table-responsive mt-4">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-striped table-hover text-center">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Codigotransaccion</th>
-                                        <th>Cuenta Id</th>
-                                        <th>User Id</th>
+                                        <th>Codigo Transaccion</th>
+                                        <th>Cuenta</th>
+                                        <th>User</th>
                                         <th>Debe</th>
                                         <th>Haber</th>
                                         <th>Descripcion</th>
                                         <th>Fecha</th>
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="">
                                     @foreach ($tblRegistroDiarios as $tblRegistroDiario)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
                                             <td>{{ $tblRegistroDiario->codigoTransaccion }}</td>
                                             <td>{{ $tblRegistroDiario->tblCuenta->nombreCuenta }}</td>
                                             <td>{{ $tblRegistroDiario->user->nombreEmpleado }}</td>
@@ -58,10 +64,7 @@
                                             <td>{{ $tblRegistroDiario->descripcion }}</td>
                                             <td>{{ $tblRegistroDiario->fecha }}</td>
                                             <td>
-                                                <form action="{{ route('tbl-registro-diario.destroy', $tblRegistroDiario->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('tbl-registro-diario.show', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('tbl-registro-diario.edit', $tblRegistroDiario->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
+                                                <form action="{{ route('tbl-registro-diario.destroy', $tblRegistroDiario->codigoTransaccion) }}" method="POST">                                                    @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
                                                 </form>

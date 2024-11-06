@@ -44,18 +44,12 @@ Route::middleware('verificarUsuario')->group(function (){
     Route::controller(BalanceComprobacionController::class)->group(function (){
         Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
     });
-    
-    
-    Route::controller(RegistroDiarioController::class)->group(function (){
-        Route::get('/consultar_asiento_diario','index')->name('asiento_diario.index');
-        Route::get('/registrar_asiento_diario','insertar')->name('asiento_diario.insertar');
-    });
-    
-    
+        
     Route::resource('users', UserController::class);
     Route::resource('tbl-cuentas', TblCuentaController::class);
     Route::resource('tbl-permisos', TblPermisoController::class);
     Route::resource('tbl-logs', TblLogController::class);
     Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
     Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);
+    Route::get('/buscarRegistro', [TblRegistroDiarioController::class, 'filtrar'])->name('filtar.por.codigo');
 });
