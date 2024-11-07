@@ -4,12 +4,6 @@
     ESTADO DE RESULTADO
 @endsection
 
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/estadoresultados.css') }}">
-@endpush
-
-@section('extra-classes')my-5 @endsection
-
 @section('content')
     <h2>Estado de Resultados</h2>
     <div class="balance-container">

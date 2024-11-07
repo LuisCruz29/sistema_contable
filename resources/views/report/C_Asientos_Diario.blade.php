@@ -2,11 +2,8 @@
 @section('title')
     CONSULTA DE ASIENTO DIARIO
 @endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/consultarasientodiario.css') }}">
-@endpush
 
-@section('extra-classes')my-5 @endsection
+
 
 @section('content')
     <h2>Consulta de Asientos Diarios</h2>

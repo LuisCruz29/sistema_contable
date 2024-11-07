@@ -2,11 +2,8 @@
 @section('title')
     ESTADO DE CAPITAL
 @endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/estadocapital.css') }}">
-@endpush
 
-@section('extra-classes')my-5 @endsection
+
 
 @section('content')
     <h2>Estado de Capital</h2>

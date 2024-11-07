@@ -2,11 +2,7 @@
 @section('title')
     BALANCE GNERAL
 @endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/balancegeneral.css') }}">
-@endpush
 
-@section('extra-classes')my-5 @endsection
 
 @section('content')
     <h2>Balance General</h2>

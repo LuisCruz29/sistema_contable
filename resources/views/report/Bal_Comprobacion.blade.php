@@ -3,7 +3,7 @@
     BALANCE DE COMPROBACION
 @endsection
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/balancecomprobacion.css') }}">
+    
 @endpush
 
 @section('extra-classes')my-5 @endsection
