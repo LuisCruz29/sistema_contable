@@ -22,8 +22,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <!-- Dropdown Estados Financieros -->
-                    <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Estados Financieros
                         </a>
@@ -39,7 +39,7 @@
                             @endif
                         </ul>
                     </li>
-                    <!-- Dropdown Asientos Diarios -->
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Asientos Diarios
@@ -53,7 +53,7 @@
                             @endif
                         </ul>
                     </li>
-                    <!-- Dropdown Administración -->
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Administración
@@ -68,7 +68,7 @@
                             <li><a class="dropdown-item" href="{{route('tbl-cuentas.index')}}">Cuentas</a></li>
                         </ul>
                     </li>
-                    <!-- Cerrar Sesión -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">Cerrar Sesión</a>
                     </li>
@@ -84,13 +84,13 @@
         @yield('content')
     </div>
 
-    <!-- footer starts -->
+    
     <footer class="bg-dark p-2 text-center">
           <div class="container">
-              <p class="text-white">All Right Reserved By @website Name</p>
+          <p class="text-white">&copy; Derechos reservados por Tienda Romero</p>
           </div>
       </footer>
-      <!-- footer ends -->
+     
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
