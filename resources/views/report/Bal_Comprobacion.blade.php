@@ -10,6 +10,7 @@
 
 @section('content')
     <h2>Balance de Comprobación</h2>
+    <h4>Sin terminar</h4>
     <div class="balance-container">
         <div class="balance-section">
             <table class="table table-striped">

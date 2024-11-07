@@ -11,7 +11,7 @@
     <table class="table ">
         <thead>
             <tr>
-                <th>Fecha</th>
+                <th></th>
                 <th>Debe</th>
                 <th>Haber</th>
             </tr>

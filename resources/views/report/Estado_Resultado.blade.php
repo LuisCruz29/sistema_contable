@@ -6,6 +6,7 @@
 
 @section('content')
     <h2>Estado de Resultados</h2>
+    <h4>Sin terminar</h4>
     <div class="balance-container">
         <div class="balance-section">
             <table class="table table-striped">

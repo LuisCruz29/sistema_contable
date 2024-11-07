@@ -34,6 +34,7 @@ function agregarFila(){
         return;
     }
 
+
     // Crear nueva fila y agregar a la tabla
     const newRow = document.createElement('tr');
     newRow.innerHTML = `
@@ -41,17 +42,28 @@ function agregarFila(){
         <td><input type="hidden" name="debes[]" value="${debe}">${debe}</td>
         <td><input type="hidden" name="haberes[]" value="${haber}">${haber}</td>
         <td><input type="hidden" name="descripciones[]" value="${descripcion}">${descripcion}</td>
-        <td><button type="button" onclick="removeRow(this)">Eliminar</button></td>
+        <td><button class="btn btn-danger" type="button" onclick="removeRow(this)">Eliminar</button></td>
     `;
     table.appendChild(newRow);
 
     // Limpiar los campos después de agregar la fila
     document.getElementById('debe').value = '';
     document.getElementById('haber').value = '';
-    document.getElementById('descripcion').value = '';
 }
 
 
 function removeRow(button) {
     button.closest('tr').remove();
+}
+
+function validarYEnviar(){
+    const table = document.querySelector('table tbody');
+    const rows = Array.from(table.querySelectorAll('tr'));
+
+    if (rows.length < 2) {
+        alert('Debes agregar exactamente dos registros antes de enviar el formulario.');
+        return false;
+    }
+
+    document.querySelector('form').submit();
 }

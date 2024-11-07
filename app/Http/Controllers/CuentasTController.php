@@ -18,6 +18,9 @@ class CuentasTController extends Controller
             $totalDebe = $cuenta->tblRegistroDiarios()->sum('debe');
             $totalHaber = $cuenta->tblRegistroDiarios()->sum('haber');
             $cuenta->total = $totalDebe - $totalHaber; 
+            if ($cuenta->total<0) {
+                $cuenta->total= $totalHaber- $totalDebe;
+            }
         }
 
         return view('report.cuentasT', compact('cuentas'));

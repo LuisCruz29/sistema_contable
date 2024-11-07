@@ -6,6 +6,7 @@
 
 @section('content')
     <h2>Balance General</h2>
+    <h4>Sin terminar</h4>
     <div class="balance-container">
         <!-- Activos -->
         <div class="balance-section">

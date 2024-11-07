@@ -24,12 +24,12 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <!-- Dropdown Estados Financieros -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Estados Financieros
                         </a>
                         <ul class="dropdown-menu">
                             @if (session('user')->tblPermiso->consultarCuentasT)
-                                <li><a class="dropdown-item" href="#">Cuentas T</a></li>
+                                <li><a class="dropdown-item" href="{{route('cuentasT.index')}}">Cuentas T</a></li>
                             @endif
                             @if (session('user')->tblPermiso->consultarEstadosFinancieros)
                                 <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
@@ -41,7 +41,7 @@
                     </li>
                     <!-- Dropdown Asientos Diarios -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Asientos Diarios
                         </a>
                         <ul class="dropdown-menu">
@@ -55,7 +55,7 @@
                     </li>
                     <!-- Dropdown Administración -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Administración
                         </a>
                         <ul class="dropdown-menu">
