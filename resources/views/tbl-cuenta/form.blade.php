@@ -2,7 +2,7 @@
     <div class="col-md-12">
         
         <div class="form-group mb-2 mb20">
-            <label for="nombre_cuenta" class="form-label">{{ __('Nombrecuenta') }}</label>
+            <label for="nombre_cuenta" class="form-label">{{ __('Nombre Cuenta') }}</label>
             <input type="text" name="nombreCuenta" class="form-control @error('nombreCuenta') is-invalid @enderror" value="{{ old('nombreCuenta', $cuenta?->nombreCuenta) }}" id="nombre_cuenta" placeholder="Nombre Cuenta">
             {!! $errors->first('nombreCuenta', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>

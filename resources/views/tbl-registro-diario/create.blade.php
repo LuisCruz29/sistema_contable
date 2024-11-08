@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('template_title')
-    {{ __('Create') }} Tbl Registro Diario
+@section('title')
+   Nuevo Registro Diario
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Tbl Registro Diario</span>
+                        <span class="card-title">Nuevo Registro Diario</span>
                     </div>
                     <div class="card-body bg-white">
                         <form method="POST" action="{{ route('tbl-registro-diario.store') }}"  role="form" enctype="multipart/form-data">

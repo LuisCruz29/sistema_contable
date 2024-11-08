@@ -20,10 +20,9 @@ class TblRegistroDiarioController extends Controller
      */
     public function index(Request $request): View
     {
-        $tblRegistroDiarios = TblRegistroDiario::paginate();
+        $tblRegistroDiarios = TblRegistroDiario::all();
 
-        return view('tbl-registro-diario.index', compact('tblRegistroDiarios'))
-            ->with('i', ($request->input('page', 1) - 1) * $tblRegistroDiarios->perPage());
+        return view('tbl-registro-diario.index', compact('tblRegistroDiarios'));
     }
 
     public function filtrar(Request $request){

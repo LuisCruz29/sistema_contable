@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-
+<h1 class="m-2 text-center">CUENTAS T</h1>
 @foreach($cuentas as $cuenta)
 <div class="m-3 container">
     <h3 class="text-center">{{ $cuenta->nombreCuenta }}</h3>

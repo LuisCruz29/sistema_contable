@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('title')
-    Tbl Registro Diarios
+    Registro Diarios
 @endsection
 
 @section('content')
     
-    <div class="container-fluid mt-5">
+    <div class="container-fluid mt-5 mb-5">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $tblRegistroDiarios->withQueryString()->links() !!}
+               
             </div>
         </div>
     </div>
