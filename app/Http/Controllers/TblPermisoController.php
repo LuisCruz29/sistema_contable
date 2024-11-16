@@ -42,7 +42,7 @@ class TblPermisoController extends Controller
 
         // Registrar el log
         Log::create([
-            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'user_id' => session('user') -> id,  // El ID del usuario que realizó la acción
             'fecha_hora' => now(),  // La fecha y hora actual
             'accion' => 'crear',  // Tipo de acción
             'modulo' => 'Permisos',  // El módulo donde se realiza la acción
@@ -83,7 +83,7 @@ class TblPermisoController extends Controller
 
         // Registrar el log
         Log::create([
-            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'user_id' => session('user') -> id,  // El ID del usuario que realizó la acción
             'fecha_hora' => now(),  // La fecha y hora actual
             'accion' => 'actualizar',  // Tipo de acción
             'modulo' => 'Permisos',  // El módulo donde se realiza la acción
@@ -104,7 +104,7 @@ class TblPermisoController extends Controller
 
         // Registrar el log
         Log::create([
-            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'user_id' => session('user') -> id,  // El ID del usuario que realizó la acción
             'fecha_hora' => now(),  // La fecha y hora actual
             'accion' => 'eliminar',  // Tipo de acción
             'modulo' => 'Permisos',  // El módulo donde se realiza la acción
