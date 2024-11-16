@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Log;  // Importar el modelo Log
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
@@ -39,7 +40,17 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): RedirectResponse
     {
-        User::create($request->validated());
+        $user = User::create($request->validated());
+
+        // Registrar el evento de creación de usuario
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'crear usuario',
+            'modulo' => 'Usuarios',
+            'descripcion' => 'Se ha creado un nuevo usuario con ID ' . $user->id,
+            'tipoLog' => 'informativo',
+        ]);
 
         return Redirect::route('users.index')
             ->with('success', 'Usuario Creado Correctamente');
@@ -60,12 +71,10 @@ class UserController extends Controller
      */
     public function edit($id): View
     {
-
         $user = User::findOrFail($id);  
         $permisos = TblPermiso::all(['id', 'rol']); 
 
         return view('user.edit', compact('user', 'permisos'));
-
     }
 
     /**
@@ -75,12 +84,21 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-       
         if (empty($data['password'])) {
             unset($data['password']); 
         }
 
         $user->update($data);
+
+        // Registrar el evento de actualización de usuario
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'actualizar usuario',
+            'modulo' => 'Usuarios',
+            'descripcion' => 'Se ha actualizado el usuario con ID ' . $user->id,
+            'tipoLog' => 'informativo',
+        ]);
 
         return Redirect::route('users.index')
             ->with('success', 'Usuario Modificado Correctamente');
@@ -88,7 +106,19 @@ class UserController extends Controller
 
     public function destroy($id): RedirectResponse
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+
+        // Registrar el evento de eliminación de usuario
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'eliminar usuario',
+            'modulo' => 'Usuarios',
+            'descripcion' => 'Se ha eliminado el usuario con ID ' . $user->id,
+            'tipoLog' => 'informativo',
+        ]);
+
+        $user->delete();
 
         return Redirect::route('users.index')
             ->with('success', 'Usuario Eliminado Correctamente');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TblCuenta;
+use App\Models\Log;  // Importar el modelo Log
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TblCuentaRequest;
@@ -37,7 +38,17 @@ class TblCuentaController extends Controller
      */
     public function store(TblCuentaRequest $request): RedirectResponse
     {
-        TblCuenta::create($request->validated());
+        $cuenta = TblCuenta::create($request->validated());
+
+        // Registrar el evento de creación de cuenta
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'crear cuenta',
+            'modulo' => 'Cuentas',
+            'descripcion' => 'Se ha creado una nueva cuenta con ID ' . $cuenta->id,
+            'tipoLog' => 'informativo',
+        ]);
 
         return Redirect::route('tbl-cuentas.index')
             ->with('success', 'Cuenta creada exitosamente.');
@@ -70,13 +81,34 @@ class TblCuentaController extends Controller
     {
         $tblCuenta->update($request->validated());
 
+        // Registrar el evento de actualización de cuenta
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'actualizar cuenta',
+            'modulo' => 'Cuentas',
+            'descripcion' => 'Se ha actualizado la cuenta con ID ' . $tblCuenta->id,
+            'tipoLog' => 'informativo',
+        ]);
+
         return Redirect::route('tbl-cuentas.index')
             ->with('success', 'Cuenta modificada exitosamente');
     }
 
     public function destroy($id): RedirectResponse
     {
-        TblCuenta::find($id)->delete();
+        $cuenta = TblCuenta::find($id);
+        $cuenta->delete();
+
+        // Registrar el evento de eliminación de cuenta
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'eliminar cuenta',
+            'modulo' => 'Cuentas',
+            'descripcion' => 'Se ha eliminado la cuenta con ID ' . $cuenta->id,
+            'tipoLog' => 'informativo',
+        ]);
 
         return Redirect::route('tbl-cuentas.index')
             ->with('success', 'Cuenta eliminada exitosamente');

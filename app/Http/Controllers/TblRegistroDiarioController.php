@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TblRegistroDiario;
+use App\Models\Log;  // Importar el modelo Log
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TblRegistroDiarioRequest;
@@ -10,8 +11,6 @@ use App\Models\TblCuenta;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
-use function Laravel\Prompts\table;
 
 class TblRegistroDiarioController extends Controller
 {
@@ -25,12 +24,13 @@ class TblRegistroDiarioController extends Controller
         return view('tbl-registro-diario.index', compact('tblRegistroDiarios'));
     }
 
-    public function filtrar(Request $request){
+    public function filtrar(Request $request)
+    {
         $request->validate([
             'codigoTransaccion' => 'required|numeric'
         ]);
 
-        $tblRegistroDiarios = TblRegistroDiario::where('codigoTransaccion',$request->input('codigoTransaccion'))->paginate(2);
+        $tblRegistroDiarios = TblRegistroDiario::where('codigoTransaccion', $request->input('codigoTransaccion'))->paginate(2);
         return view('tbl-registro-diario.index', compact('tblRegistroDiarios'));
     }
 
@@ -40,14 +40,12 @@ class TblRegistroDiarioController extends Controller
     public function create(): View
     {
         $tblRegistroDiario = new TblRegistroDiario();
-        $cuentas=TblCuenta::all();
-        return view('tbl-registro-diario.create', compact('tblRegistroDiario','cuentas'));
+        $cuentas = TblCuenta::all();
+        return view('tbl-registro-diario.create', compact('tblRegistroDiario', 'cuentas'));
     }
 
-   
     public function store(Request $request)
     {
-        
         $request->validate([
             'codigoTransaccion' => 'required',
             'user_id' => 'required',
@@ -56,10 +54,8 @@ class TblRegistroDiarioController extends Controller
             'debes' => 'required|array|max:2',
             'haberes' => 'required|array|max:2',
             'descripciones' => 'required|array|max:2',
-            
         ]);
 
-        
         foreach ($request->cuenta_ids as $index => $cuentaId) {
             TblRegistroDiario::create([
                 'codigoTransaccion' => $request->codigoTransaccion,
@@ -72,9 +68,18 @@ class TblRegistroDiarioController extends Controller
             ]);
         }
 
+        // Registrar el evento de creación de registro diario
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'crear registro diario',
+            'modulo' => 'Registros Diarios',
+            'descripcion' => 'Se han creado registros diarios para la transacción ' . $request->codigoTransaccion,
+            'tipoLog' => 'informativo',
+        ]);
+
         return Redirect::route('tbl-registro-diario.index')->with('success', 'Registros guardados exitosamente');
     }
-
 
     /**
      * Display the specified resource.
@@ -89,14 +94,24 @@ class TblRegistroDiarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    
 
     public function destroy($codigo): RedirectResponse
     {
-        DB::table('tbl_RegistroDiario')->where('codigoTransaccion',$codigo)->delete();
+        $registro = TblRegistroDiario::where('codigoTransaccion', $codigo)->first();
+        
+        DB::table('tbl_RegistroDiario')->where('codigoTransaccion', $codigo)->delete();
+
+        // Registrar el evento de eliminación de registro diario
+        Log::create([
+            'user_id' => session('user')->id,  // Suponiendo que el usuario está en la sesión
+            'fecha_hora' => now(),
+            'accion' => 'eliminar registro diario',
+            'modulo' => 'Registros Diarios',
+            'descripcion' => 'Se ha eliminado el registro diario con código de transacción ' . $codigo,
+            'tipoLog' => 'informativo',
+        ]);
+
         return Redirect::route('tbl-registro-diario.index')
             ->with('success', 'Registro diario eliminado exitosamente');
     }
-
-
 }

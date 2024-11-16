@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TblPermiso;
+use App\Models\Log;  // Importar el modelo Log
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\TblPermisoRequest;
@@ -39,6 +40,16 @@ class TblPermisoController extends Controller
     {
         TblPermiso::create($request->validated());
 
+        // Registrar el log
+        Log::create([
+            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'fecha_hora' => now(),  // La fecha y hora actual
+            'accion' => 'crear',  // Tipo de acción
+            'modulo' => 'Permisos',  // El módulo donde se realiza la acción
+            'descripcion' => 'Se creó un nuevo permiso.',  // Descripción de lo realizado
+            'tipoLog' => 'Agrear Permiso',  // Tipo de log (puede ser informativo, error, etc.)
+        ]);
+
         return Redirect::route('tbl-permisos.index')
             ->with('success', 'TblPermiso created successfully.');
     }
@@ -70,13 +81,36 @@ class TblPermisoController extends Controller
     {
         $tblPermiso->update($request->validated());
 
+        // Registrar el log
+        Log::create([
+            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'fecha_hora' => now(),  // La fecha y hora actual
+            'accion' => 'actualizar',  // Tipo de acción
+            'modulo' => 'Permisos',  // El módulo donde se realiza la acción
+            'descripcion' => 'Se actualizó un permiso.',  // Descripción de lo realizado
+            'tipoLog' => 'Actualizar permiso',  // Tipo de log
+        ]);
+
         return Redirect::route('tbl-permisos.index')
             ->with('success', 'TblPermiso updated successfully');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($id): RedirectResponse
     {
         TblPermiso::find($id)->delete();
+
+        // Registrar el log
+        Log::create([
+            'user_id' => auth()->id,  // El ID del usuario que realizó la acción
+            'fecha_hora' => now(),  // La fecha y hora actual
+            'accion' => 'eliminar',  // Tipo de acción
+            'modulo' => 'Permisos',  // El módulo donde se realiza la acción
+            'descripcion' => 'Se eliminó un permiso.',  // Descripción de lo realizado
+            'tipoLog' => 'Eliminar permiso',  // Tipo de log
+        ]);
 
         return Redirect::route('tbl-permisos.index')
             ->with('success', 'TblPermiso deleted successfully');
