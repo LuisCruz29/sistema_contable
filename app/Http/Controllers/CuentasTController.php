@@ -15,12 +15,19 @@ class CuentasTController extends Controller
         }])->get();
 
         foreach ($cuentas as $cuenta) {
+            // Calcular el total de "Debe" y "Haber" para cada cuenta
             $totalDebe = $cuenta->tblRegistroDiarios()->sum('debe');
             $totalHaber = $cuenta->tblRegistroDiarios()->sum('haber');
+
+            // Asignar el total a la cuenta
             $cuenta->total = $totalDebe - $totalHaber;
             if ($cuenta->total < 0) {
                 $cuenta->total = $totalHaber - $totalDebe;
             }
+
+            // Calcular los totales de cada columna
+            $cuenta->total_debe = $totalDebe;
+            $cuenta->total_haber = $totalHaber;
         }
 
         // Registrar la acción de obtener las cuentas T
@@ -33,6 +40,7 @@ class CuentasTController extends Controller
             'tipoLog' => 'informativo',
         ]);
 
+        // Pasar las cuentas a la vista
         return view('report.cuentasT', compact('cuentas'));
     }
 }

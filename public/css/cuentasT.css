@@ -1,0 +1,19 @@
+/* Tarjetas más anchas */
+.card {
+    border: 2px solid #f0f0f0;
+    border-radius: 8px;
+}
+
+/* Encabezado con fondo negro */
+.card-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #000; /* Fondo negro */
+    color: #fff;           /* Texto blanco */
+}
+
+/* Pie de la tarjeta */
+.card-footer {
+    background-color: #f8f9fa;
+    font-size: 1.1rem;
+}
