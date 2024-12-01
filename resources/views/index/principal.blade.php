@@ -80,12 +80,12 @@
 
       <!-- team starts -->
       <section class="team section-padding" id="team">
-          <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-header text-center pb-5">
                         <h2>Nuestro grupo de trabajo</h2>
-                        <p>Todos estudiantes de la universidad del El Salvador</p>
+                        <p>Todos estudiantes de la Universidad de El Salvador</p>
                     </div>
                 </div>
             </div>
@@ -93,66 +93,90 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="img/download (1).jpeg" alt="" class="img-fluid rounded-circle">
-                        <h3 class="card-title py-2">Santos Josue Romero Ochoa</h3>
-                        <p class="card-text">Ingeniero en Sistemas informaticos</p>
-                        
-
-                        <p class="socials">
-                            <i class="bi bi-twitter text-dark mx-1"></i>
-                        <i class="bi bi-facebook text-dark mx-1"></i>
-                        <i class="bi bi-linkedin text-dark mx-1"></i>
-                        <i class="bi bi-instagram text-dark mx-1"></i>
-                        </p>
+                            <div class="img-container">
+                                <img src="img/nayib.png" alt="Santos Josue Romero Ochoa">
+                            </div>
+                            <h3 class="card-title py-2">Santos Josue Romero Ochoa</h3>
+                            <p class="card-text">Ingeniero en Sistemas Informáticos</p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-dark mx-1"></i>
+                                <i class="bi bi-facebook text-dark mx-1"></i>
+                                <i class="bi bi-linkedin text-dark mx-1"></i>
+                                <i class="bi bi-instagram text-dark mx-1"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="img/download (1).jpeg" alt="" class="img-fluid rounded-circle">
-                        <h3 class="card-title py-2">Luis Alejandro Cruz Portillo</h3>
-                        <p class="card-text">Ingeniero en Sistemas informaticos</p>
-                        <p class="socials">
-                            <i class="bi bi-twitter text-dark mx-1"></i>
-                        <i class="bi bi-facebook text-dark mx-1"></i>
-                        <i class="bi bi-linkedin text-dark mx-1"></i>
-                        <i class="bi bi-instagram text-dark mx-1"></i>
-                        </p>
+                            <div class="img-container">
+                                <img src="img/shafig.jpeg" alt="Luis Alejandro Cruz Portillo">
+                            </div>
+                            <h3 class="card-title py-2">Luis Alejandro Cruz Portillo</h3>
+                            <p class="card-text">Ingeniero en Sistemas Informáticos</p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-dark mx-1"></i>
+                                <i class="bi bi-facebook text-dark mx-1"></i>
+                                <i class="bi bi-linkedin text-dark mx-1"></i>
+                                <i class="bi bi-instagram text-dark mx-1"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="img/download (1).jpeg" alt="" class="img-fluid rounded-circle">
-                        <h3 class="card-title py-2">Kevin Nathanael Granados Perez</h3>
-                        <p class="card-text">Ingeniero en Sistemas informaticos</p>
-                        <p class="socials">
-                            <i class="bi bi-twitter text-dark mx-1"></i>
-                        <i class="bi bi-facebook text-dark mx-1"></i>
-                        <i class="bi bi-linkedin text-dark mx-1"></i>
-                        <i class="bi bi-instagram text-dark mx-1"></i>
-                        </p>
+                            <div class="img-container">
+                                <img src="img/Manuel-Flores-1.jpg" alt="Kevin Nathanael Granados Perez">
+                            </div>
+                            <h3 class="card-title py-2">Kevin Nathanael Granados Perez</h3>
+                            <p class="card-text">Ingeniero en Sistemas Informáticos</p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-dark mx-1"></i>
+                                <i class="bi bi-facebook text-dark mx-1"></i>
+                                <i class="bi bi-linkedin text-dark mx-1"></i>
+                                <i class="bi bi-instagram text-dark mx-1"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="img/download.jpeg" alt="" class="img-fluid rounded-circle">
-                        <h3 class="card-title py-2">Cristian Geovanny Rubio Garcia</h3>
-                        <p class="card-text">Ingeniero en Sistemas informaticos</p>
-                        <p class="socials">
-                            <i class="bi bi-twitter text-dark mx-1"></i>
-                        <i class="bi bi-facebook text-dark mx-1"></i>
-                        <i class="bi bi-linkedin text-dark mx-1"></i>
-                        <i class="bi bi-instagram text-dark mx-1"></i>
-                        </p>
+                            <div class="img-container">
+                                <img src="img/daniel-ortega-regreso-presidencia-nicaragua.jpeg" alt="Cristian Geovanny Rubio Garcia">
+                            </div>
+                            <h3 class="card-title py-2">Cristian Geovanny Rubio Garcia</h3>
+                            <p class="card-text">Ingeniero en Sistemas Informáticos</p>
+                            <p class="socials">
+                                <i class="bi bi-twitter text-dark mx-1"></i>
+                                <i class="bi bi-facebook text-dark mx-1"></i>
+                                <i class="bi bi-linkedin text-dark mx-1"></i>
+                                <i class="bi bi-instagram text-dark mx-1"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-          </div>
-      </section>
+        </div>
+    </section>
+    
+    <style>
+        .img-container {
+            width: 150px; /* Ajusta el tamaño según sea necesario */
+            height: 150px; /* Ajusta el tamaño según sea necesario */
+            margin: 0 auto 1rem auto;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
 @endsection
