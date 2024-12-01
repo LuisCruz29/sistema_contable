@@ -16,6 +16,6 @@ class Cuentas extends Model
     
     
     public function registroDiario(){
-        $this->hasMany(RegistroDiario::class);
+        $this->hasMany(TblRegistroDiario::class);
     }
 }

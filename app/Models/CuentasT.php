@@ -13,4 +13,9 @@ class CuentasT extends Model
     protected $table = 'tbl_CuentasT';
     protected $fillable = ['cuentas_id', 'debe', 'haber','fecha'];
     public $timestamps = false;
+
+    public function tblCuenta()
+    {
+        return $this->belongsTo(\App\Models\TblCuenta::class, 'cuentas_id', 'id');
+    }
 }

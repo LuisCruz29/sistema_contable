@@ -3,6 +3,7 @@
 use App\Http\Controllers\BalanceComprobacionController;
 use App\Http\Controllers\CuentasTController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\MayorizacionController;
 use App\Http\Controllers\RegistroDiarioController;
 use App\Http\Controllers\TblCuentaController;
 use App\Http\Controllers\TblLogController;
@@ -50,8 +51,12 @@ Route::middleware('verificarUsuario')->group(function (){
 
         Route::get('/cuentasT','obtenerCuentasT')->name('cuentasT.index');
         Route::post('/cuentasT_filtrada','obtenerCuentasTXfecha')->name('cuentasT.filtro');
-        Route::post('/mayorizar','mayorizarMes')->name('cuentasT.mayor');
         
+    });
+    
+    Route::controller(MayorizacionController::class)->group(function (){
+        
+        Route::post('/mayorizar','mayorizarMes')->name('cuentasT.mayor');
     });
         
     Route::resource('users', UserController::class);

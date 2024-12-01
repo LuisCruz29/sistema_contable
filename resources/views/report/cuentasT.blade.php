@@ -6,8 +6,19 @@
 
 @section('content')
 <h1 class="m-2 text-center">CUENTAS T</h1>
+@if ($message = Session::get('success'))
+    <div class="alert alert-success m-4">
+        <p>{{ $message }}</p>
+    </div>
+@endif
+@if ($message = Session::get('error'))
+    <div class="alert alert-danger m-4">
+        <p>{{ $message }}</p>
+    </div>
+@endif
 <div class="container my-3">
     <div class="container d-flex justify-content-center">
+
         <form action="{{route('cuentasT.filtro')}}" method="post">
             @csrf
             <label for="fecha_inicio">Fecha Inicio: </label>
@@ -20,7 +31,8 @@
 </div>
 <div class="container mb-3">
     <div class="container d-flex justify-content-center">
-        <form action="" method="get">
+        <form action="{{route('cuentasT.mayor')}}" method="post">
+            @csrf
             <label for="fecha_inicio">Fecha Inicio: </label>
             <input type="date" name="fecha_inicio" id="fecha_inicio">
             <label for="fecha_fin">Fecha Fin: </label>
