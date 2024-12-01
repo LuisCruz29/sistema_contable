@@ -11,5 +11,6 @@ class CuentasT extends Model
     use HasFactory;
 
     protected $table = 'tbl_CuentasT';
-
+    protected $fillable = ['cuentas_id', 'debe', 'haber','fecha'];
+    public $timestamps = false;
 }

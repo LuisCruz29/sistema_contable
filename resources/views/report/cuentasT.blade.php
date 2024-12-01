@@ -6,7 +6,29 @@
 
 @section('content')
 <h1 class="m-2 text-center">CUENTAS T</h1>
-
+<div class="container my-3">
+    <div class="container d-flex justify-content-center">
+        <form action="{{route('cuentasT.filtro')}}" method="post">
+            @csrf
+            <label for="fecha_inicio">Fecha Inicio: </label>
+            <input type="date" name="fecha_inicio" id="fecha_inicio">
+            <label for="fecha_fin">Fecha Fin: </label>
+            <input type="date" name="fecha_fin" id="fecha_fin">
+            <button type="submit" class="ms-2 btn btn-primary">Filtrar por fecha</button>
+        </form>
+    </div>
+</div>
+<div class="container mb-3">
+    <div class="container d-flex justify-content-center">
+        <form action="" method="get">
+            <label for="fecha_inicio">Fecha Inicio: </label>
+            <input type="date" name="fecha_inicio" id="fecha_inicio">
+            <label for="fecha_fin">Fecha Fin: </label>
+            <input type="date" name="fecha_fin" id="fecha_fin">
+            <button type="submit" class="ms-2 btn btn-primary">Mayorizar mes</button>
+        </form>
+    </div>
+</div>
 <div class="container">
     @foreach($cuentas as $cuenta)
         <div class="row justify-content-center mb-4">
@@ -49,14 +71,14 @@
                             <!-- Total en la columna Débito -->
                             <div class="col-6 border-end">
                                 @if($cuenta->total_debe > $cuenta->total_haber)
-                                    <strong class="text-success">Total: {{ $cuenta->total_debe }}</strong>
+                                    <strong class="text-success">Total: {{ $cuenta->total }}</strong>
                                 @endif
                             </div>
 
                             <!-- Total en la columna Crédito -->
                             <div class="col-6">
                                 @if($cuenta->total_haber >= $cuenta->total_debe)
-                                    <strong class="text-danger">Total: {{ $cuenta->total_haber }}</strong>
+                                    <strong class="text-danger">Total: {{ $cuenta->total }}</strong>
                                 @endif
                             </div>
                         </div>

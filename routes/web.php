@@ -46,13 +46,18 @@ Route::middleware('verificarUsuario')->group(function (){
         Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
     });
 
-    Route::get('/cuentasT',[CuentasTController::class,'obtenerCuentasT'])->name('cuentasT.index');
+    Route::controller(CuentasTController::class)->group(function (){
+
+        Route::get('/cuentasT','obtenerCuentasT')->name('cuentasT.index');
+        Route::post('/cuentasT_filtrada','obtenerCuentasTXfecha')->name('cuentasT.filtro');
+        Route::post('/mayorizar','mayorizarMes')->name('cuentasT.mayor');
+        
+    });
         
     Route::resource('users', UserController::class);
     Route::resource('tbl-cuentas', TblCuentaController::class);
     Route::resource('tbl-permisos', TblPermisoController::class);
-    Route::resource('tbl-logs', TblLogController::class);
-    Route::delete('/tbl-logs/delete', [TblLogController::class, 'deleteTodo'])->name('tbl-logs.deleteTodo');
+   
     Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);
     Route::get('/buscarRegistro', [TblRegistroDiarioController::class, 'filtrar'])->name('filtar.por.codigo');
 });
