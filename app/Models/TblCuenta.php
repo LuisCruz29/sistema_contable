@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TblRegistroDiario;
+use App\Models\CuentasT;
 /**
  * Class TblCuenta
  *
@@ -52,7 +53,11 @@ class TblCuenta extends Model
     //  */
     public function tblRegistroDiarios()
     {
-        return $this->hasMany(TblRegistroDiario::class, 'cuenta_id', 'id');
+        return $this->hasMany(TblRegistroDiario::class, 'cuenta_id','id');
     }
     
+    public function tblCuentasT()
+    {
+        return $this->hasMany(CuentasT::class,'cuentas_id','id');
+    }
 }

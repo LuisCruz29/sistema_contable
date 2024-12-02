@@ -15,7 +15,8 @@ class Cuentas extends Model
     protected $fillable = ['nombreCuenta','descripcion','tipo'];
     
     
-    public function registroDiario(){
-        $this->hasMany(TblRegistroDiario::class);
-    }
+    // public function registroDiario(){
+    //     $this->hasMany(TblRegistroDiario::class);
+    // }
+    
 }

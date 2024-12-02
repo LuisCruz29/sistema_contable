@@ -25,7 +25,7 @@ class TblRegistroDiario extends Model
 {
     
     protected $perPage = 20;
-    protected $table = 'tbl_RegistroDiario';
+    protected $table = 'tbl_registro_diarios';
     /**
      * The attributes that are mass assignable.
      *

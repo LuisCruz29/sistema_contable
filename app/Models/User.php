@@ -61,7 +61,7 @@ class User extends Model
     }
 
     public function maxCodigoRegistro(){
-        $maxId=DB::table('tbl_RegistroDiario')
+        $maxId=DB::table('tbl_registro_diarios')
                 ->selectRaw('COALESCE(MAX("codigoTransaccion") + 1, 1) AS max_id')
                 ->value('max_id');
 

@@ -57,6 +57,13 @@
                             <div class="col-6 border-end">
                                 <h6 class="text-success">Debe</h6>
                                 <ul class="list-unstyled">
+                                    @if($cuenta->tblCuentasT !== null)
+                                        @foreach($cuenta->tblCuentasT as $registro)
+                                            @if($registro->debe > 0)
+                                                    <li>{{ $registro->fecha }}: <strong>{{ $registro->debe }}</strong></li>
+                                                @endif
+                                        @endforeach
+                                    @endif
                                     @foreach($cuenta->tblRegistroDiarios as $registro)
                                         @if($registro->debe > 0)
                                             <li>{{ $registro->fecha }}: <strong>{{ $registro->debe }}</strong></li>
@@ -69,6 +76,13 @@
                             <div class="col-6">
                                 <h6 class="text-danger">Haber</h6>
                                 <ul class="list-unstyled">
+                                    @if($cuenta->tblCuentasT !== null)
+                                        @foreach($cuenta->tblCuentasT as $registro)
+                                            @if($registro->haber > 0)
+                                                    <li>{{ $registro->fecha }}: <strong>{{ $registro->haber }}</strong></li>
+                                                @endif
+                                        @endforeach
+                                    @endif
                                     @foreach($cuenta->tblRegistroDiarios as $registro)
                                         @if($registro->haber > 0)
                                             <li>{{ $registro->fecha }}: <strong>{{ $registro->haber }}</strong></li>
