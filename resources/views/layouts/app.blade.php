@@ -90,13 +90,13 @@
         <div class="container">
             <p class="text-white">&copy; Derechos reservados por Tienda Romero</p>
             <div class="footer-links">
-            <a href="https://github.com/TuUsuario/TuRepositorio" target="_blank" title="Repositorio en GitHub" class="text-white mx-3">
+            <a href="https://github.com/LuisCruz29/sistema_contable" target="_blank" title="Repositorio en GitHub" class="text-white mx-3">
                 <i class="fab fa-github fa-2x"></i>
             </a>
-            <a href="ruta/a/manual_usuario.pdf" target="_blank" title="Manual de Usuario" class="text-white mx-3">
+            <a href="https://app.tango.us/app/workflow/Manual-de-Usuario-del-Sistema-Financiero-Tienda-Romero-0a783d25f5fa47c881f73b5c85321562" target="_blank" title="Manual de Usuario" class="text-white mx-3">
                 <i class="fas fa-file-pdf fa-2x"></i>
             </a>
-            <a href="ruta/a/manual_programador.pdf" target="_blank" title="Manual de Programador" class="text-white mx-3">
+            <a href="https://drive.google.com/file/d/1nFLkvRGx-oMIaWydYm5yi16EQlE-vto1/view?usp=sharing" target="_blank" title="Manual de Programador" class="text-white mx-3">
                 <i class="fas fa-code fa-2x"></i>
             </a>
             </div>

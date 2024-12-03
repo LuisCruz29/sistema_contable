@@ -25,7 +25,7 @@
       <div class="footer">
         <p>© 2024 Tienda Romero. Todos los derechos reservados.</p>
         <div class="footer-links">
-          <a href="https://github.com/LuisCruz29/sistema" target="_blank" title="Repositorio en GitHub">
+          <a href="https://github.com/LuisCruz29/sistema_contable" target="_blank" title="Repositorio en GitHub">
             <i class="fab fa-github"></i> GitHub
           </a>
           <a href="https://app.tango.us/app/workflow/Manual-de-Usuario-del-Sistema-Financiero-Tienda-Romero-0a783d25f5fa47c881f73b5c85321562" target="_blank" title="Manual de Usuario">
