@@ -1,86 +1,110 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Balance General</h1>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Balance General</h1>
 
-    <h2>Activos</h2>
-    @if(!empty($activosSaldo))
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre de Cuenta</th>
-                    <th>Descripción</th>
-                    <th>Saldo</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($activosSaldo as $saldo)
+        <!-- Activos -->
+        <h2 class="text-success">Activos</h2>
+        @if(!empty($activosSaldo))
+            <table class="table table-striped table-hover border rounded">
+                <thead class="table-success">
                     <tr>
-                        <td>{{ $saldo['nombreCuenta'] }}</td>
-                        <td>{{ $saldo['descripcion'] }}</td>
-                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        <th>Nombre de Cuenta</th>
+                        <th>Descripción</th>
+                        <th>Saldo</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        <p>No hay cuentas de tipo Activo.</p>
-    @endif
-
-    @if(isset($totalActivos))
-        <h3>Total Activos: ${{ number_format($totalActivos, 2) }}</h3>
-    @endif
-
-    <h2>Pasivos</h2>
-    @if(!empty($pasivosSaldo))
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre de Cuenta</th>
-                    <th>Descripción</th>
-                    <th>Saldo</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($pasivosSaldo as $saldo)
+                </thead>
+                <tbody>
+                    @foreach($activosSaldo as $saldo)
+                        <tr>
+                            <td>{{ $saldo['nombreCuenta'] }}</td>
+                            <td>{{ $saldo['descripcion'] }}</td>
+                            <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        </tr>
+                    @endforeach
+                    <!-- Fila del total -->
                     <tr>
-                        <td>{{ $saldo['nombreCuenta'] }}</td>
-                        <td>{{ $saldo['descripcion'] }}</td>
-                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        <td colspan="2" class="text-end fw-bold">Total Activos:</td>
+                        <td class="fw-bold text-success">${{ number_format($totalActivos, 2) }}</td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <h3>Total Pasivos: ${{ number_format($totalPasivos, 2) }}</h3>
-    @else
-        <p>No hay cuentas de tipo Pasivo.</p>
-    @endif
+                </tbody>
+            </table>
+        @else
+            <p class="text-muted">No hay cuentas de tipo Activo.</p>
+        @endif
 
-    <h2>Capital</h2>
-    @if(!empty($capitalSaldo))
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Nombre de Cuenta</th>
-                    <th>Descripción</th>
-                    <th>Saldo</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($capitalSaldo as $saldo)
+        <!-- Pasivos -->
+        <h2 class="text-danger mt-5">Pasivos</h2>
+        @if(!empty($pasivosSaldo))
+            <table class="table table-striped table-hover border rounded">
+                <thead class="table-danger">
                     <tr>
-                        <td>{{ $saldo['nombreCuenta'] }}</td>
-                        <td>{{ $saldo['descripcion'] }}</td>
-                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        <th>Nombre de Cuenta</th>
+                        <th>Descripción</th>
+                        <th>Saldo</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <h3>Total Capital: ${{ number_format($totalCapital, 2) }}</h3>
-    @else
-        <p>No hay cuentas de tipo Capital.</p>
-    @endif
+                </thead>
+                <tbody>
+                    @foreach($pasivosSaldo as $saldo)
+                        <tr>
+                            <td>{{ $saldo['nombreCuenta'] }}</td>
+                            <td>{{ $saldo['descripcion'] }}</td>
+                            <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        </tr>
+                    @endforeach
+                    <!-- Fila del total -->
+                    <tr>
+                        <td colspan="2" class="text-end fw-bold">Total Pasivos:</td>
+                        <td class="fw-bold text-danger">${{ number_format($totalPasivos, 2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <p class="text-muted">No hay cuentas de tipo Pasivo.</p>
+        @endif
 
-    <h2>Total Pasivo + Capital</h2>
-    <h3>${{ number_format($totalPasivoCapital, 2) }}</h3>
+        <!-- Capital -->
+        <h2 class="text-warning mt-5">Capital</h2>
+        @if(!empty($capitalSaldo))
+            <table class="table table-striped table-hover border rounded">
+                <thead class="table-warning">
+                    <tr>
+                        <th>Nombre de Cuenta</th>
+                        <th>Descripción</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($capitalSaldo as $saldo)
+                        <tr>
+                            <td>{{ $saldo['nombreCuenta'] }}</td>
+                            <td>{{ $saldo['descripcion'] }}</td>
+                            <td>${{ number_format($saldo['saldo'], 2) }}</td>
+                        </tr>
+                    @endforeach
+                    <!-- Fila del total -->
+                    <tr>
+                        <td colspan="2" class="text-end fw-bold">Total Capital:</td>
+                        <td class="fw-bold text-warning">${{ number_format($totalCapital, 2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <p class="text-muted">No hay cuentas de tipo Capital.</p>
+        @endif
+
+        <!-- Total Pasivo + Capital -->
+        <div class="mt-5">
+            <h2 class="text-info">Total Pasivo + Capital</h2>
+            <table class="table table-bordered border rounded">
+                <tbody>
+                    <tr>
+                        <td class="text-end fw-bold">Total Pasivo + Capital:</td>
+                        <td class="fw-bold text-info">${{ number_format($totalPasivoCapital, 2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection

@@ -86,11 +86,26 @@
     </div>
 
     
-    <footer class="bg-dark p-2 text-center">
-          <div class="container">
-          <p class="text-white">&copy; Derechos reservados por Tienda Romero</p>
-          </div>
+    <footer class="bg-dark p-4 text-center">
+        <div class="container">
+            <p class="text-white">&copy; Derechos reservados por Tienda Romero</p>
+            <div class="footer-links">
+            <a href="https://github.com/TuUsuario/TuRepositorio" target="_blank" title="Repositorio en GitHub" class="text-white mx-3">
+                <i class="fab fa-github fa-2x"></i>
+            </a>
+            <a href="ruta/a/manual_usuario.pdf" target="_blank" title="Manual de Usuario" class="text-white mx-3">
+                <i class="fas fa-file-pdf fa-2x"></i>
+            </a>
+            <a href="ruta/a/manual_programador.pdf" target="_blank" title="Manual de Programador" class="text-white mx-3">
+                <i class="fas fa-code fa-2x"></i>
+            </a>
+            </div>
+        </div>
     </footer>
+
+    <!-- Asegúrate de incluir Font Awesome en tu proyecto -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
      
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

@@ -21,9 +21,27 @@
               <i class="bi bi-box-arrow-in-right"></i> INICIAR SESIÓN
           </a>
       </div>
+
       <div class="footer">
-          © 2024 Tienda Romero. Todos los derechos reservados.
+        <p>© 2024 Tienda Romero. Todos los derechos reservados.</p>
+        <div class="footer-links">
+          <a href="https://github.com/TuUsuario/TuRepositorio" target="_blank" title="Repositorio en GitHub">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="ruta/a/manual_usuario.pdf" target="_blank" title="Manual de Usuario">
+            <i class="fas fa-file-pdf"></i> Manual de Usuario
+          </a>
+          <a href="ruta/a/manual_programador.pdf" target="_blank" title="Manual de Programador">
+            <i class="fas fa-code"></i> Manual de Programador
+          </a>
+        </div>
       </div>
+
+      <!-- Asegúrate de incluir Font Awesome en tu proyecto -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
