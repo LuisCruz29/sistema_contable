@@ -18,22 +18,17 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($ingresos->isNotEmpty())
-                    @foreach ($ingresos as $ingreso)
+               
+                    @foreach ($ingresosData as $ingreso)
                         <tr>
-                            <td>{{ $ingreso->nombreCuenta }}</td>
-                            <td>${{ number_format($ingreso->tblCuentasT->sum('haber'), 2) }}</td>
+                            <td>{{ $ingreso['nombreCuenta'] }}</td>
+                            <td>${{  number_format($totalIngresos, 2) }}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <td><strong>Total Ingresos</strong></td>
                         <td><strong>${{ number_format($totalIngresos, 2) }}</strong></td>
                     </tr>
-                @else
-                    <tr>
-                        <td colspan="2">No se encontró la cuenta 'Ingresos por servicios'.</td>
-                    </tr>
-                @endif
             </tbody>
         </table>
     </div>
@@ -50,10 +45,10 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($gastos as $gasto)
+                @foreach ($gastosData as $gasto)
                     <tr>
-                        <td>{{ $gasto->nombreCuenta }}</td>
-                        <td>${{ number_format($gasto->tblCuentasT->sum('debe') - $gasto->tblCuentasT->sum('haber'), 2) }}</td>
+                        <td>{{ $gasto['nombreCuenta'] }}</td>
+                        <td>${{ number_format($gasto['totalDebe'], 2) }}</td>
                     </tr>
                 @endforeach
                 <tr>

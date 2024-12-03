@@ -18,6 +18,7 @@
                 <option {{ old('tipo', $cuenta?->tipo) == 'Contra Activo' ? 'selected' : '' }}>Contra Activo</option>
                 <option {{ old('tipo', $cuenta?->tipo) == 'Pasivo' ? 'selected' : '' }}>Pasivo</option>
                 <option {{ old('tipo', $cuenta?->tipo) == 'Capital' ? 'selected' : '' }}>Capital</option>
+                <option {{ old('tipo', $cuenta?->tipo) == 'Retiro' ? 'selected' : '' }}>Retiro</option>
                 <option {{ old('tipo', $cuenta?->tipo) == 'Ingresos' ? 'selected' : '' }}>Ingresos</option>
                 <option {{ old('tipo', $cuenta?->tipo) == 'Gastos' ? 'selected' : '' }}>Gastos</option>
             </select>

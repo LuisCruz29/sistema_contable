@@ -105,7 +105,7 @@ class BalanceGeneralController extends Controller
     private function calcularSaldoPasivos($cuentas, $fechaInicio, $fechaFin)
     {
         $saldos = [];
-
+        
         foreach ($cuentas as $cuenta) {
             // Filtrar por fecha
             $saldo = CuentasT::where('cuentas_id', $cuenta->id)
@@ -129,7 +129,38 @@ class BalanceGeneralController extends Controller
     private function calcularSaldoCapital($cuentas, $fechaInicio, $fechaFin)
     {
         $saldos = [];
+        $capitalInicial = DB::table('tbl_cuentas')
+        ->join('tbl_CuentasT', 'tbl_cuentas.id', '=', 'tbl_CuentasT.cuentas_id')
+        ->where('tbl_cuentas.tipo', 'Capital')
+        ->whereBetween('tbl_CuentasT.fecha', [$fechaInicio, $fechaFin])  // Filtro por fecha
+        ->sum('tbl_CuentasT.haber');
 
+        // Obtener los ingresos filtrados por fecha
+        $ingresos = DB::table('tbl_cuentas')
+            ->join('tbl_CuentasT', 'tbl_cuentas.id', '=', 'tbl_CuentasT.cuentas_id')
+            ->where('tbl_cuentas.nombreCuenta', 'Ingresos por Servicios') 
+            ->whereBetween('tbl_CuentasT.fecha', [$fechaInicio, $fechaFin])  // Filtro por fecha
+            ->sum('tbl_CuentasT.haber');
+
+        // Obtener los gastos filtrados por fecha
+        $gastos = DB::table('tbl_cuentas')
+            ->join('tbl_CuentasT', 'tbl_cuentas.id', '=', 'tbl_CuentasT.cuentas_id')
+            ->where('tbl_cuentas.tipo', 'Gastos')
+            ->whereBetween('tbl_CuentasT.fecha', [$fechaInicio, $fechaFin])  // Filtro por fecha
+            ->sum('tbl_CuentasT.debe');
+
+        // Calcular la utilidad neta
+        $utilidadNeta = $ingresos - $gastos;
+
+        // Obtener los retiros filtrados por fecha
+        $retiros = DB::table('tbl_cuentas')
+            ->join('tbl_CuentasT', 'tbl_cuentas.id', '=', 'tbl_CuentasT.cuentas_id')
+            ->where('tbl_cuentas.tipo', 'Retiro')
+            ->whereBetween('tbl_CuentasT.fecha', [$fechaInicio, $fechaFin])  // Filtro por fecha
+            ->sum('tbl_CuentasT.debe');
+
+        // Calcular el capital total
+        $capitalTotal = $capitalInicial + $utilidadNeta - $retiros;
         foreach ($cuentas as $cuenta) {
             // Filtrar por fecha
             $saldo = CuentasT::where('cuentas_id', $cuenta->id)
@@ -146,7 +177,7 @@ class BalanceGeneralController extends Controller
             $saldos[$cuenta->id] = [
                 'nombreCuenta' => $cuenta->nombreCuenta,
                 'descripcion' => $cuenta->descripcion,
-                'saldo' => $saldoCalculado,
+                'saldo' => $capitalTotal,
             ];
         }
 
