@@ -3,11 +3,8 @@
     ESTADO DE CAPITAL
 @endsection
 
-
-
 @section('content')
     <h2>Estado de Capital</h2>
-    <h4>Sin terminar</h4>
     <div class="balance-container">
         <div class="balance-section">
             <table class="table table-striped">
@@ -18,48 +15,57 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Capital Inicial -->
+             
                     <tr>
-                        <td>Romero, Capital</td>
-                        <td>$50,000</td>
+                        <td>
+                            @if($nombreCuentaCapital->isNotEmpty())
+                                {{ $nombreCuentaCapital->first() }} 
+                            @else
+                                Romero, Capital
+                            @endif
+                        </td>
+                        <td>${{ number_format($capitalInicial, 2) }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">&nbsp;</td>
-                    </tr> <!-- Fila en blanco -->
+                    </tr>
 
                     <tr>
-                        <td class="fw-bold">Mas</td>
+                        <td style="font-weight: bold;">Más</td>
                         <td></td>
                     </tr>
-                    <!-- Retiros -->
                     <tr>
                         <td>Utilidad neta</td>
-                        <td>($10,500)</td>
+                        <td>${{ number_format($utilidadNeta, 2) }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">&nbsp;</td>
-                    </tr> <!-- Fila en blanco -->
+                    </tr>
 
                     <tr>
-                        <td class="fw-bold">Menos</td>
+                        <td style="font-weight: bold;">Menos</td>
                         <td></td>
                     </tr>
-                    <!-- Retiros -->
                     <tr>
-                        <td>Romero, Retiros</td>
-                        <td>($5,000)</td>
+                        <td>
+                            @if($nombreCuentaRetiro->isNotEmpty())
+                                {{ $nombreCuentaRetiro->first() }} 
+                            @else
+                                Romero, Retiros
+                            @endif
+                        </td>
+                        <td>${{ number_format($retiros, 2) }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">&nbsp;</td>
-                    </tr> <!-- Fila en blanco -->
+                    </tr>
 
-                    <!-- Capital Total -->
-                    <tr class="capital-total"> <!-- Aplicando estilo de borde -->
+                    <tr style="font-weight: bold; border-top: 2px solid black;">
                         <td>Capital Total</td>
-                        <td>$55,500</td>
+                        <td>${{ number_format($capitalTotal, 2) }}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div>  
+    </div>
 @endsection

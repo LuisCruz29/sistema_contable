@@ -1,95 +1,86 @@
 @extends('layouts.app')
-@section('title')
-    BALANCE GNERAL
-@endsection
-
 
 @section('content')
-    <h2>Balance General</h2>
-    <h4>Sin terminar</h4>
-    <div class="balance-container">
-        <!-- Activos -->
-        <div class="balance-section">
-            <h4 class="fw-bold">Activos</h4>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Descripción</th>
-                        <th>Monto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Efectivo</td>
-                        <td>$10,000</td>
-                    </tr>
-                    <tr>
-                        <td>Inventarios</td>
-                        <td>$5,000</td>
-                    </tr>
-                    <tr>
-                        <td>Cuenta por cobrar</td>
-                        <td>$3,000</td>
-                    </tr>
-                    <tr class="depreciacion">
-                        <td class="sangria">Menos: Depreciación acumulada</td>
-                        <td class="sangria">($2,000)</td>
-                    </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                    <tr class="totales">
-                        <td>Total de Activos</td>
-                        <td>$16,000</td>
-                    </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                </tbody>
-            </table>
-        </div>
+    <h1>Balance General</h1>
 
-        <!-- Pasivos y Capital -->
-        <div class="balance-section">
-            <h4 class="fw-bold">Pasivos y Capital</h4>
-            <table class="table table-striped">
-                <thead>
+    <h2>Activos</h2>
+    @if(!empty($activosSaldo))
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre de Cuenta</th>
+                    <th>Descripción</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($activosSaldo as $saldo)
                     <tr>
-                        <th>Descripción</th>
-                        <th>Monto</th>
+                        <td>{{ $saldo['nombreCuenta'] }}</td>
+                        <td>{{ $saldo['descripcion'] }}</td>
+                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
                     </tr>
-                </thead>
-                <tbody>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No hay cuentas de tipo Activo.</p>
+    @endif
+
+    @if(isset($totalActivos))
+        <h3>Total Activos: ${{ number_format($totalActivos, 2) }}</h3>
+    @endif
+
+    <h2>Pasivos</h2>
+    @if(!empty($pasivosSaldo))
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre de Cuenta</th>
+                    <th>Descripción</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($pasivosSaldo as $saldo)
                     <tr>
-                        <td>Deuda a corto plazo</td>
-                        <td>$4,000</td>
+                        <td>{{ $saldo['nombreCuenta'] }}</td>
+                        <td>{{ $saldo['descripcion'] }}</td>
+                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
                     </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <h3>Total Pasivos: ${{ number_format($totalPasivos, 2) }}</h3>
+    @else
+        <p>No hay cuentas de tipo Pasivo.</p>
+    @endif
+
+    <h2>Capital</h2>
+    @if(!empty($capitalSaldo))
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre de Cuenta</th>
+                    <th>Descripción</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($capitalSaldo as $saldo)
                     <tr>
-                        <td>Proveedores</td>
-                        <td>$2,000</td>
+                        <td>{{ $saldo['nombreCuenta'] }}</td>
+                        <td>{{ $saldo['descripcion'] }}</td>
+                        <td>${{ number_format($saldo['saldo'], 2) }}</td>
                     </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                    <tr class="totales">
-                        <td class="fw-bold">Total de Pasivos</td>
-                        <td>$6,000</td>
-                    </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                    <tr>
-                        <td>Capital Social</td>
-                        <td>$8,000</td>
-                    </tr>
-                    <tr>
-                        <td>Reservas</td>
-                        <td>$2,000</td>
-                    </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                    <tr class="totales">
-                        <td>Total Capital</td>
-                        <td>$10,000</td>
-                    </tr>
-                    <tr><td colspan="2">&nbsp;</td></tr> <!-- Fila en blanco -->
-                    <tr class="totales">
-                        <td class="fw-bold">Total Pasivo + Capital</td>
-                        <td>$16,000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                @endforeach
+            </tbody>
+        </table>
+        <h3>Total Capital: ${{ number_format($totalCapital, 2) }}</h3>
+    @else
+        <p>No hay cuentas de tipo Capital.</p>
+    @endif
+
+    <h2>Total Pasivo + Capital</h2>
+    <h3>${{ number_format($totalPasivoCapital, 2) }}</h3>
 @endsection

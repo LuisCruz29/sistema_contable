@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\BalanceComprobacionController;
+use App\Http\Controllers\BalanceGeneralController;
 use App\Http\Controllers\CuentasTController;
+use App\Http\Controllers\EstadoCapitalController;
+use App\Http\Controllers\EstadoResultadoController;
+use App\Http\Controllers\EstadoResultadosController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\MayorizacionController;
 use App\Http\Controllers\RegistroDiarioController;
@@ -29,19 +33,12 @@ Route::middleware('verificarUsuario')->group(function (){
     Route::get('/principal', function () {
         return view('index.principal');
     });
-    
-    
-    Route::get('/balancegeneral', function () {
-        return view('report.Bal_General');
-    });
+
     
     Route::get('/estadocapital', function () {
         return view('report.Estado_Capital');
     });
-    
-    Route::get('/estadoresultado', function () {
-        return view('report.Estado_Resultado');
-    });
+
     
     Route::controller(BalanceComprobacionController::class)->group(function (){
         Route::get('/balancecomprobacion','index')->name('bal_comprobacion.index');
@@ -65,4 +62,10 @@ Route::middleware('verificarUsuario')->group(function (){
    
     Route::resource('tbl-registro-diario', TblRegistroDiarioController::class);
     Route::get('/buscarRegistro', [TblRegistroDiarioController::class, 'filtrar'])->name('filtar.por.codigo');
+
+    Route::get('/balance-general', [BalanceGeneralController::class, 'index'])->name('balance.general');
+    Route::get('/estado-resultados', [EstadoResultadoController::class, 'mostrarEstadoResultados'])->name('estado.resultados');
+    Route::get('/estado-capital', [EstadoCapitalController::class, 'index'])->name('estado.capital');
+
+
 });

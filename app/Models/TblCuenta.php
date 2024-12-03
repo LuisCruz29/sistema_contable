@@ -60,4 +60,20 @@ class TblCuenta extends Model
     {
         return $this->hasMany(CuentasT::class,'cuentas_id','id');
     }
+
+        public static function activos()
+    {
+        return self::where('tipo', 'activo')->get();
+    }
+
+    public static function pasivos()
+    {
+        return self::where('tipo', 'pasivo')->get();
+    }
+
+    public static function capital()
+    {
+        return self::where('tipo', 'capital')->get();
+    }
+
 }

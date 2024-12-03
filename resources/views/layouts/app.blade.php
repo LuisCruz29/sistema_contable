@@ -33,9 +33,9 @@
                                 <li><a class="dropdown-item" href="{{route('cuentasT.index')}}">Cuentas T</a></li>
                             @endif
                             @if (session('user')->tblPermiso->consultarEstadosFinancieros)
-                                <li><a class="dropdown-item" href="/balancegeneral">Balance General</a></li>
-                                <li><a class="dropdown-item" href="/estadoresultado">Estado De Resultados</a></li>
-                                <li><a class="dropdown-item" href="/estadocapital">Estado De Capital</a></li>
+                                <li><a class="dropdown-item" href="{{route('balance.general')}}">Balance General</a></li>
+                                <li><a class="dropdown-item" href="{{route('estado.resultados')}}">Estado De Resultados</a></li>
+                                <li><a class="dropdown-item" href="{{route('estado.capital')}}">Estado De Capital</a></li>
                                 <li><a class="dropdown-item" href="{{route('bal_comprobacion.index')}}">Balance De Comprobacion</a></li>
                             @endif
                         </ul>
