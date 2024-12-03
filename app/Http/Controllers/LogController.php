@@ -41,15 +41,6 @@ class LogController extends Controller
             return redirect('/principal');
         }
 
-        // Registrar el evento de login fallido
-        Log::create([
-            'user_id' => null,
-            'fecha_hora' => now(),
-            'accion' => 'login fallido',
-            'modulo' => 'Autenticación',
-            'descripcion' => 'Usuario o contraseña incorrectos.',
-            'tipoLog' => 'advertencia',
-        ]);
 
         return redirect()->route('login')->with('error', 'Usuario o contraseña incorrectos.');
     }

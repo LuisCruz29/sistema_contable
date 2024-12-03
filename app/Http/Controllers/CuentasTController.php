@@ -34,12 +34,12 @@ class CuentasTController extends Controller
        
         // Procesar las cuentas y calcular los totales
         foreach ($cuentas as $cuenta) {
-            $totalDebe = $cuenta->tblRegistroDiarios()->sum('debe');
-            $totalHaber = $cuenta->tblRegistroDiarios()->sum('haber');
+            $totalDebe = $cuenta->tblRegistroDiarios()->whereBetween('fecha', [$fechaInicio, $fechaFin])->sum('debe');
+            $totalHaber = $cuenta->tblRegistroDiarios()->whereBetween('fecha', [$fechaInicio, $fechaFin])->sum('haber');
             
-            // Total de los registros de CuentasT del mes anterior
-            $totalDebeT = $cuenta->tblCuentasT()->sum('debe');
-            $totalHaberT = $cuenta->tblCuentasT()->sum('haber');
+            // Total de los registros de tblCuentasT para el mes anterior
+            $totalDebeT = $cuenta->tblCuentasT()->whereBetween('fecha', [$fechaInicioAnterior, $fechaFinAnterior])->sum('debe');
+            $totalHaberT = $cuenta->tblCuentasT()->whereBetween('fecha', [$fechaInicioAnterior, $fechaFinAnterior])->sum('haber');
             
             // Calcular el total general de la cuenta
             $totalDebeTotal = $totalDebe + $totalDebeT;
@@ -80,7 +80,7 @@ class CuentasTController extends Controller
         
        
         $fechaInicioAnterior = $fechaInicio->copy()->subMonth()->startOfMonth()->toDateString(); 
-        $fechaFinAnterior = $fechaFin->copy()->subMonth()->endOfMonth()->toDateString(); 
+        $fechaFinAnterior = $fechaInicio->copy()->subMonth()->endOfMonth()->toDateString(); 
         
         $cuentas = TblCuenta::with([
             'tblRegistroDiarios' => function ($query) use ($fechaInicio, $fechaFin) {
