@@ -1,0 +1,10 @@
+[90m= [39m[34;4mApp\Models\User[39;24m {#6278
+    [34mpermiso_id[39m: [35m1[39m,
+    [34mnombreEmpleado[39m: "[32mJuan[39m",
+    [34mapellidoEmpleado[39m: "[32mPérez[39m",
+    [34mtelefono[39m: "[32m123456789[39m",
+    [34muser[39m: "[32mjuan.perez[39m",
+    [34mpassword[39m: "[32m$2y$12$2TFYkCh9gAZWxYqKLQxBjujsjzGDlm9.T8BEHfm7vvnmRPLiGyenC[39m",
+    [34mid[39m: [35m1[39m,
+  }
+

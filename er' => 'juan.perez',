@@ -1,0 +1,11 @@
+[90m= [39m[34;4mApp\Models\TblPermiso[39;24m {#6303
+    [34mrol[39m: "[32mAdministrador[39m",
+    [34mingresarRegistroDiario[39m: [36mtrue[39m,
+    [34mconsultarRegistroDiario[39m: [36mtrue[39m,
+    [34mconsultarCuentasT[39m: [36mtrue[39m,
+    [34mconsultarEstadosFinancieros[39m: [36mtrue[39m,
+    [34mcrearUsuarios[39m: [36mtrue[39m,
+    [34mgestionarPermisos[39m: [36mtrue[39m,
+    [34mid[39m: [35m1[39m,
+  }
+

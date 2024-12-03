@@ -25,13 +25,13 @@
       <div class="footer">
         <p>© 2024 Tienda Romero. Todos los derechos reservados.</p>
         <div class="footer-links">
-          <a href="https://github.com/TuUsuario/TuRepositorio" target="_blank" title="Repositorio en GitHub">
+          <a href="https://github.com/LuisCruz29/sistema" target="_blank" title="Repositorio en GitHub">
             <i class="fab fa-github"></i> GitHub
           </a>
-          <a href="ruta/a/manual_usuario.pdf" target="_blank" title="Manual de Usuario">
+          <a href="https://app.tango.us/app/workflow/Manual-de-Usuario-del-Sistema-Financiero-Tienda-Romero-0a783d25f5fa47c881f73b5c85321562" target="_blank" title="Manual de Usuario">
             <i class="fas fa-file-pdf"></i> Manual de Usuario
           </a>
-          <a href="ruta/a/manual_programador.pdf" target="_blank" title="Manual de Programador">
+          <a href="https://drive.google.com/file/d/1nFLkvRGx-oMIaWydYm5yi16EQlE-vto1/view?usp=sharing" target="_blank" title="Manual de Programador">
             <i class="fas fa-code"></i> Manual de Programador
           </a>
         </div>
